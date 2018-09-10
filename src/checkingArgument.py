@@ -1,59 +1,40 @@
 #! /usr/bin/env python3
-
+"""
+    Check arguments
+"""
 import sys
-import getopt
+
 
 def check_int_type(rep):
+    ''' Check if the answer can be cast into int
+        and return it
+    '''
     try:
-        assert int(rep)
         rep = int(rep)
-        assert rep > 0
     except ValueError:
-        print("Be carefull, a number is expected")
-        usage()
+        print("Be carefull, a number is expected !")
         sys.exit(2)
-    except AssertionError:
-        print("The number must be positif")
-        usage()
-        sys.exit(2)
+    assert rep > 0, "The number must be positif"
     return rep
 
 
 def check_arguments(argv):
-    try:
-        opts, args = getopt.getopt(argv, "hs:t:e:m:",
-                                   ["help", "sequence=", "steps=", "energy=",
-                                    "movement="])
-    except getopt.GetoptError as err:
-        # print help information and exit:
-        print("ERROR : options are not recognized")
-        usage()
+    ''' Assign options into variable and check if
+        option are correct.
+    '''
+    global SEQUENCE
+    global LEN_SEQ
+    SEQUENCE = argv["--sequence"].upper()
+    LEN_SEQ = len(SEQUENCE)
+
+    global NB_STEPS
+    NB_STEPS = check_int_type(argv["--steps"])
+
+    global MIN_ENERGY
+    MIN_ENERGY = - check_int_type(argv["--energy"])
+
+    global MOVE_SET
+    MOVE_SET = argv["--movement"]
+    if not MOVE_SET in ("VSHD", "PULLMOVES", "MIXE"):
+        print("You can choose between VSHD, PULLMOVES and MIXE movement set.")
         sys.exit(2)
-
-#BUG checker le nombre d'argument ATTENTION à help qui sera le seul argument
-    for opt, arg in opts:
-        if opt in ("-h", "--help"):
-            usage()
-            sys.exit()
-        elif opt in ("-s", "--sequence"):
-            global SEQUENCE
-            global LEN_SEQ
-            SEQUENCE = arg.upper()
-            LEN_SEQ = len(SEQUENCE)
-        elif opt in ("-t", "--steps"):
-            global NB_STEPS
-            NB_STEPS = check_int_type(arg)
-        elif opt in ("-e", "--energy"):
-            global MIN_ENERGY
-            MIN_ENERGY = - check_int_type(arg)
-        elif opt in ("-m", "--movement"):
-            global MOVE_SET
-            MOVE_SET = arg
-            if not(MOVE_SET in ("VSHD", "PULLMOVES", "MIXE")):
-                print("PROBLEM MOVE SET")
-                usage()
-                sys.exit(2)
-
-
-def usage():
-    print("HELP")

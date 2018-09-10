@@ -1,12 +1,25 @@
 #! /usr/bin/env python3
+"""REMC script
 
-import sys
+Usage:
+  main.py -s <seq> -e <x> -t <nb_steps> -m <move>
+
+Options:
+  -h --help      help
+  --version      version of the script
+  -s --sequence = seq        hgjgjhgjh
+  -e --energy = x            hgjgjhgjh
+  -t --steps = nb_steps      hgjgjhgjh
+  -m --movement = move       hgjgjhgjh
+"""
+
 import random
+from docopt import docopt
 import conformation
 import checkingArgument as cA
 
 if __name__ == '__main__':
-    cA.check_arguments(sys.argv[1:])
+    cA.check_arguments(docopt(__doc__, version='0.1'))
     # Initialiser une matrice vide à -1
     structure_grid = [[-1] * (4*cA.LEN_SEQ) for i in range(4*cA.LEN_SEQ)]
 
