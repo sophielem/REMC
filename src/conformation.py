@@ -5,20 +5,31 @@
 import checkingArgument as cA
 import random
 import copy
+import Residu
+import Movement
+import End_moves
 
 
-def vshd_move(residu, structure_grid, dico_residu):
-    if residu == 0 or residu == (cA.LEN_SEQ - 1):
-        end_moves(residu, dico_residu, structure_grid)
+
+def vshd_move(index, structure_grid, residues):
+    if index == 0 or residu == (cA.LEN_SEQ - 1):
+        test = End_moves.End_moves(residues[index])
+        rep = test.functii(structure_grid)
     else:
         prob = random.random()
-        if prob >= 0.8:
-            crankshaft_moves(residu)
+        if prob >= 0.5:
+            crankshaft_moves(index)
         else:
-            corner_moves(residu)
+            corner_moves(index)
 
-
-def end_moves(residu, dico_residu, structure_grid):
+    if rep != None:
+        if Movement.changeGrid(test, structure_grid, residues, rep, index):
+            # Attribution des nouvelles coordonnées
+            pass
+        else:
+            # Probabilite de transition
+            pass
+    return None
 
 
 def crankshaft_moves(residu):
@@ -29,11 +40,8 @@ def corner_moves(residu):
     pass
 
 
-def search_freedom_neighbour(residu, structure_grid, dico_residu):
-
-
-
-def countBonds(structure_grid, dico_residu):
+def countBonds(structure_grid, residues):
+    pass
 
 
 #PULLMOVE SET
