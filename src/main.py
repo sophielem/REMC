@@ -5,12 +5,12 @@ Usage:
   main.py -s <seq> -e <x> -t <nb_steps> -m <move>
 
 Options:
-  -h --help      help
-  --version      version of the script
+  -h --help                  help
+  --version                  version of the script
   -s --sequence = seq        hgjgjhgjh
   -e --energy = x            hgjgjhgjh
   -t --steps = nb_steps      hgjgjhgjh
-  -m --movement = move       hgjgjhgjh
+  -m --movement = move       VSHD, PULLMOVES or MIXE
 """
 
 import random
@@ -23,16 +23,18 @@ if __name__ == '__main__':
     # Initialiser une matrice vide à -1
     structure_grid = [[-1] * (4*cA.LEN_SEQ) for i in range(4*cA.LEN_SEQ)]
 
+    dico_residu = []
     # Ecrire la séquence au milieu de la matrice
     for i in range(0, cA.LEN_SEQ):
         structure_grid[2*cA.LEN_SEQ][i + round(1.5*cA.LEN_SEQ)] = i
+        dico_residu.append({'HP': cA.SEQUENCE[i], 'line': 2*cA.LEN_SEQ, 'column': i + round(1.5*cA.LEN_SEQ)})
 
     # for i in range(0, NB_STEPS):
     residu = random.randint(0, cA.LEN_SEQ - 1)
 
     if cA.MOVE_SET == "VSHD":
-        conformation.vshd_move(residu)
+        conformation.vshd_move(residu, structure_grid, dico_residu)
     elif cA.MOVE_SET == "PULLMOVES":
-        conformation.pullmoves_move(residu)
+        conformation.pullmoves_move(residu, structure_grid)
     else:
-        conformation.mixe_move(residu)
+        conformation.mixe_move(residu, structure_grid)

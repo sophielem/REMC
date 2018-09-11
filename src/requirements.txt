@@ -1,1 +1,1 @@
-pip install docopt
+docopt: 0.6.2

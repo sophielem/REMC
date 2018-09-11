@@ -1,12 +1,15 @@
 #! /usr/bin/env python3
-
+'''
+    Movement
+'''
 import checkingArgument as cA
 import random
+import copy
 
 
-def vshd_move(residu):
+def vshd_move(residu, structure_grid, dico_residu):
     if residu == 0 or residu == (cA.LEN_SEQ - 1):
-        end_moves(residu)
+        end_moves(residu, dico_residu, structure_grid)
     else:
         prob = random.random()
         if prob >= 0.8:
@@ -15,8 +18,7 @@ def vshd_move(residu):
             corner_moves(residu)
 
 
-def end_moves(residu):
-    pass
+def end_moves(residu, dico_residu, structure_grid):
 
 
 def crankshaft_moves(residu):
@@ -27,8 +29,15 @@ def corner_moves(residu):
     pass
 
 
+def search_freedom_neighbour(residu, structure_grid, dico_residu):
+
+
+
+def countBonds(structure_grid, dico_residu):
+
+
 #PULLMOVE SET
-def pullmoves_move(residu):
+def pullmoves_move(residu, structure_grid):
     pull_moves(residu)
 
 
@@ -37,7 +46,7 @@ def pull_moves(residu):
 
 
 # MIXE SET
-def mixe_move(residu):
+def mixe_move(residu, structure_grid):
     prob = random.random()
     if residu == 0 or residu == (cA.LEN_SEQ - 1):
         if prob <= 0.4:
