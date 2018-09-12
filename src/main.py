@@ -36,7 +36,8 @@ def initialization():
     now.previous_res = previous
     residues.append(now)
     previous = now
-
+  # Le dernier residu n a pas de residu suivant
+  residues[i].next_res = None
   return residues
 
 
@@ -52,9 +53,9 @@ if __name__ == '__main__':
     index = random.randint(0, cA.LEN_SEQ - 1)
 
     # Mouvement
-    move = Movement(index)
+    move = Movement(cA.LEN_SEQ - 1)
     if cA.MOVE_SET == "VSHD":
-        random_neighbour = conformation.vshd_move(0, structure_grid, residues)
+        random_neighbour = conformation.vshd_move(cA.LEN_SEQ - 1, structure_grid, residues)
 
     elif cA.MOVE_SET == "PULLMOVES":
         conformation.pullmoves_move(index, structure_grid)

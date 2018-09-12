@@ -5,11 +5,13 @@ class Movement():
 
     def countBonds(self, structure_grid, residues):
         bonds = 0
+        # Liste tous les liens deja compte pour ne pas avoir de doublons
         counted_bond = []
         for res in range(cA.LEN_SEQ):
             # Si polaire, pas de liaison possible donc suivant
             if cA.SEQUENCE[res] == 'P':
                 continue
+            # Contient tous les voisins
             index = []
             index.append(structure_grid[residues[res].line][residues[res].column + 1])
             index.append(structure_grid[residues[res].line][residues[res].column - 1])
