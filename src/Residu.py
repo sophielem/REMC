@@ -3,10 +3,10 @@
 class Residu:
   """ text
   """
-  def search_freedom_neighbour(self, structure_grid):
-    ''' Search for freedom neighbour and return a dictionnaire
+  def search_free_neighbour(self, structure_grid):
+    """ Search for freedom neighbour and return a dictionnaire
         of their coordinates
-    '''
+    """
     # liste de dico avec les coordonnées des voisins libres
     freedom_neighbour_list = []
 

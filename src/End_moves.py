@@ -8,9 +8,9 @@ class End_moves(Movement.Movement):
 
   def mutation(self, structure_grid):
     if self.index == 0:
-      freedom_neighbour_list = self.residu.next_res.search_freedom_neighbour(structure_grid)
+      freedom_neighbour_list = self.residu.next_res.search_free_neighbour(structure_grid)
     else:
-      freedom_neighbour_list = self.residu.previous_res.search_freedom_neighbour(structure_grid)
+      freedom_neighbour_list = self.residu.previous_res.search_free_neighbour(structure_grid)
     if freedom_neighbour_list == []:
         return None
 

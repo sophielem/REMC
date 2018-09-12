@@ -1,14 +1,15 @@
 #! /usr/bin/env python3
 """
-    Check arguments
+    Check if user enter all necessary arguments correctly.
+    Otherwise, a message is sent to the user.
 """
 import sys
 
 
 def check_int_type(rep):
-    ''' Check if the answer can be cast into int
+    """ Check if the answer can be cast into int
         and return it
-    '''
+    """
     try:
         rep = int(rep)
     except ValueError:
@@ -19,9 +20,9 @@ def check_int_type(rep):
 
 
 def check_arguments(argv):
-    ''' Assign options into variable and check if
+    """ Assign options into variable and check if
         option are correct.
-    '''
+    """
     global SEQUENCE
     global LEN_SEQ
     SEQUENCE = argv["--sequence"].upper()

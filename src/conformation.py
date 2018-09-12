@@ -1,7 +1,9 @@
 #! /usr/bin/env python3
-'''
-    Movement
-'''
+"""
+    Define different movement possible according to user's choice.
+    Then, launch the most appropriate movement.
+"""
+
 import checkingArgument as cA
 import random
 import copy
@@ -13,18 +15,25 @@ import Crankshaft_moves
 
 
 def vshd_move(index, structure_grid, residues):
+    """ Launch a VSHD movement according to the random residu.
+        Return a list with the new lattice and  the new residues object
+    """
     new_conformation = None
+    # If the residu is the first or the last
     if index == 0 or index == (cA.LEN_SEQ - 1):
         move = End_moves.End_moves(residues[index], index)
         mutation_residu = move.mutation(structure_grid)
+        # The mutation is possible because a neighbour is free
         if mutation_residu != None:
             new_conformation = move.changeOneResidu(structure_grid, residues, mutation_residu)
     else:
+        # Choose randomly between corner or crankshaft movement
         prob = random.random()
         if prob >= 0.5:
             move = Crankshaft_moves.crankshaft_moves(residues[index], index)
             mutation_residu = move.mutation(structure_grid)
-            new_conformation = move.changeTwoResidues(structure_grid, residues, mutation_residu)
+            if mutation_residu != None:
+                new_conformation = move.changeTwoResidues(structure_grid, residues, mutation_residu)
         else:
             move = Corner_moves.Corner_moves(residues[index], index)
             mutation_residu = move.mutation(structure_grid)

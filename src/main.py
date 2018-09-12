@@ -23,6 +23,8 @@ from Movement import *
 
 
 def initialization():
+    """ Initialization of the lattice and residues object
+    """
   residues = []
   previous = None
 
@@ -30,20 +32,20 @@ def initialization():
     structure_grid[2*cA.LEN_SEQ][i + round(1.5*cA.LEN_SEQ)] = i
     now = Residu(cA.SEQUENCE[i], 2*cA.LEN_SEQ, i + round(1.5*cA.LEN_SEQ))
     if i != 0:
-      # le résidu now est le suivant du résidu previous
+        # the residu object now is the following of residu previous
       previous.next_res = now
-     # ajout du residu previous au residu now
+     # the residu previous is the previous of residu now
     now.previous_res = previous
     residues.append(now)
     previous = now
-  # Le dernier residu n a pas de residu suivant
+  # the last residu has not next residu
   residues[i].next_res = None
   return residues
 
 
 if __name__ == '__main__':
     cA.check_arguments(docopt(__doc__, version='0.1'))
-    # Initialiser une matrice vide à -1
+    # Initialize the lattice to -1 for empty
     structure_grid = [[-1] * (4*cA.LEN_SEQ) for i in range(4*cA.LEN_SEQ)]
 
     residues = initialization()
@@ -53,9 +55,10 @@ if __name__ == '__main__':
     while nb_steps < cA.NB_STEPS :
       index = random.randint(0, cA.LEN_SEQ - 1)
       index = 1
-      # Mouvement
+      # Movement
       move = Movement(index)
       if cA.MOVE_SET == "VSHD":
+          # the lattice and residues object with the mutation if it is possible
           new_conformation = conformation.vshd_move(index, structure_grid, residues)
 
       elif cA.MOVE_SET == "PULLMOVES":
@@ -64,23 +67,24 @@ if __name__ == '__main__':
       else:
           conformation.mixe_move(index, structure_grid)
 
-      # Le mouvement est possible
+      # The movement is possible, the new energy is calculated
       if new_conformation != None:
         energy_new = move.countBonds(new_conformation[1], new_conformation[0])
-        
-      # Le mouvement permet de baisser l energie
+
+      # The movement makes the energy decrease
         if energy_new <= energy:
+            # Keep the new conformation and residues object
           residues = new_conformation[0]
           structure_grid = new_conformation[1]
           energy = energy_new
 
-      # Sinon on regarde la probabilite suivant l algo de Monte Carlo
-        '''else:
+      # Otherwise, calculate the probability to accept anyway the new conformation
+        """else:
           prob_random = random.random()
           TEMPERATURE = 160
           if prob_random >= math.exp(-(energy_new - energy) / TEMPERATURE):
             residues = new_conformation[0]
             structure_grid = new_conformation[1]
-            energy = energy_new'''
+            energy = energy_new"""
       nb_steps = nb_steps + 1
     print(structure_grid)
