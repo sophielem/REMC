@@ -13,20 +13,24 @@ import Crankshaft_moves
 
 
 def vshd_move(index, structure_grid, residues):
-    mutation_residu = None
+    new_conformation = None
     if index == 0 or index == (cA.LEN_SEQ - 1):
         move = End_moves.End_moves(residues[index], index)
         mutation_residu = move.mutation(structure_grid)
+        if mutation_residu != None:
+            new_conformation = move.changeOneResidu(structure_grid, residues, mutation_residu)
     else:
-        move = Corner_moves.Corner_moves(residues[index], index)
-        mutation_residu = move.mutation(structure_grid)
         prob = random.random()
-        '''if prob >= 0.5:
-            crankshaft_moves(index)
+        if prob >= 0.5:
+            move = Crankshaft_moves.crankshaft_moves(residues[index], index)
+            mutation_residu = move.mutation(structure_grid)
+            new_conformation = move.changeTwoResidues(structure_grid, residues, mutation_residu)
         else:
             move = Corner_moves.Corner_moves(residues[index], index)
-            mutation_residu = move.mutation(structure_grid)'''
-    return mutation_residu
+            mutation_residu = move.mutation(structure_grid)
+            if mutation_residu != None:
+                new_conformation = move.changeOneResidu(structure_grid, residues, mutation_residu)
+    return new_conformation
 
 #PULLMOVE SET
 def pullmoves_move(residu, structure_grid):

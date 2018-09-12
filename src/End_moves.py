@@ -11,11 +11,11 @@ class End_moves(Movement.Movement):
       freedom_neighbour_list = self.residu.next_res.search_freedom_neighbour(structure_grid)
     else:
       freedom_neighbour_list = self.residu.previous_res.search_freedom_neighbour(structure_grid)
-      if freedom_neighbour_list == []:
-          return None
+    if freedom_neighbour_list == []:
+        return None
 
-      random_neighbour = random.randint(0, len(freedom_neighbour_list) - 1)
-      return freedom_neighbour_list[random_neighbour]
+    random_neighbour = random.randint(0, len(freedom_neighbour_list) - 1)
+    return freedom_neighbour_list[random_neighbour]
 
 
   def __init__(self, res, i):

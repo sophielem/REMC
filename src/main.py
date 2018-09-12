@@ -50,13 +50,13 @@ if __name__ == '__main__':
     energy = 0
     nb_steps = 0
 
-    while nb_steps < cA.NB_STEPS and energy > cA.MIN_ENERGY:
+    while nb_steps < cA.NB_STEPS :
       index = random.randint(0, cA.LEN_SEQ - 1)
-
+      index = 1
       # Mouvement
       move = Movement(index)
       if cA.MOVE_SET == "VSHD":
-          random_neighbour = conformation.vshd_move(index, structure_grid, residues)
+          new_conformation = conformation.vshd_move(index, structure_grid, residues)
 
       elif cA.MOVE_SET == "PULLMOVES":
           conformation.pullmoves_move(index, structure_grid)
@@ -65,8 +65,7 @@ if __name__ == '__main__':
           conformation.mixe_move(index, structure_grid)
 
       # Le mouvement est possible
-      if random_neighbour != None:
-        new_conformation = move.changeConformation(structure_grid, residues, random_neighbour)
+      if new_conformation != None:
         energy_new = move.countBonds(new_conformation[1], new_conformation[0])
         
       # Le mouvement permet de baisser l energie
@@ -83,5 +82,5 @@ if __name__ == '__main__':
             residues = new_conformation[0]
             structure_grid = new_conformation[1]
             energy = energy_new'''
-        nb_steps = nb_steps + 1
+      nb_steps = nb_steps + 1
     print(structure_grid)
