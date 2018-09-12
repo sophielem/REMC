@@ -50,7 +50,7 @@ if __name__ == '__main__':
     energy = 0
     nb_steps = 0
 
-    while nb_steps < cA.NB_STEPS or energy > cA.MIN_ENERGY:
+    while nb_steps < cA.NB_STEPS and energy > cA.MIN_ENERGY:
       index = random.randint(0, cA.LEN_SEQ - 1)
 
       # Mouvement
@@ -76,10 +76,12 @@ if __name__ == '__main__':
           energy = energy_new
 
       # Sinon on regarde la probabilite suivant l algo de Monte Carlo
-        else:
+        '''else:
           prob_random = random.random()
+          TEMPERATURE = 160
           if prob_random >= math.exp(-(energy_new - energy) / TEMPERATURE):
             residues = new_conformation[0]
             structure_grid = new_conformation[1]
-            energy = energy_new
-
+            energy = energy_new'''
+        nb_steps = nb_steps + 1
+    print(structure_grid)
