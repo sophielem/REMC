@@ -48,34 +48,38 @@ if __name__ == '__main__':
 
     residues = initialization()
     energy = 0
+    nb_steps = 0
 
-    # for i in range(0, NB_STEPS):
-    index = random.randint(0, cA.LEN_SEQ - 1)
+    while nb_steps < cA.NB_STEPS or energy > cA.MIN_ENERGY:
+      index = random.randint(0, cA.LEN_SEQ - 1)
 
-    # Mouvement
-    move = Movement(cA.LEN_SEQ - 1)
-    if cA.MOVE_SET == "VSHD":
-        random_neighbour = conformation.vshd_move(cA.LEN_SEQ - 1, structure_grid, residues)
+      # Mouvement
+      move = Movement(index)
+      if cA.MOVE_SET == "VSHD":
+          random_neighbour = conformation.vshd_move(index, structure_grid, residues)
 
-    elif cA.MOVE_SET == "PULLMOVES":
-        conformation.pullmoves_move(index, structure_grid)
+      elif cA.MOVE_SET == "PULLMOVES":
+          conformation.pullmoves_move(index, structure_grid)
 
-    else:
-        conformation.mixe_move(index, structure_grid)
-
-    # Le mouvement est possible
-    if random_neighbour != None:
-      new_conformation = move.changeConformation(structure_grid, residues, random_neighbour)
-      energy_new = move.countBonds(new_conformation[1], new_conformation[0])
-      
-    # Le mouvement permet de baisser l energie
-      if energy_new <= energy:
-        residues = new_conformation[0]
-        structure_grid = new_conformation[1]
-
-    # Sinon on regarde la probabilite suivant l algo de Monte Carlo
       else:
-        prob_random = random.random()
-        if prob_random >= math.exp(-(energy_new - energy) / TEMPERATURE):
+          conformation.mixe_move(index, structure_grid)
+
+      # Le mouvement est possible
+      if random_neighbour != None:
+        new_conformation = move.changeConformation(structure_grid, residues, random_neighbour)
+        energy_new = move.countBonds(new_conformation[1], new_conformation[0])
+        
+      # Le mouvement permet de baisser l energie
+        if energy_new <= energy:
           residues = new_conformation[0]
           structure_grid = new_conformation[1]
+          energy = energy_new
+
+      # Sinon on regarde la probabilite suivant l algo de Monte Carlo
+        else:
+          prob_random = random.random()
+          if prob_random >= math.exp(-(energy_new - energy) / TEMPERATURE):
+            residues = new_conformation[0]
+            structure_grid = new_conformation[1]
+            energy = energy_new
+

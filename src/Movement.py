@@ -20,10 +20,10 @@ class Movement():
 
             for idx in index:
                 # res+1 et res-1 vérifier que le résidu n'est pas un voisin sur la séquence
-                if idx != res+1 and idx != res-1 and residues[idx] == 'H' and not sorted(idx, res) in counted_bond:
+                if (idx != res+1) and (idx != res-1) and (residues[idx].hp == 'H') and (not sorted([idx, res]) in counted_bond):
                     counted_bond.append(sorted([idx, res]))
                     bonds -= 1
-
+                    
         return bonds
 
 

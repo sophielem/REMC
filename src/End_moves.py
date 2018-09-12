@@ -6,7 +6,7 @@ class End_moves(Movement.Movement):
   """ text
   """
 
-  def functii(self, structure_grid):
+  def mutation(self, structure_grid):
     if self.index == 0:
       freedom_neighbour_list = self.residu.next_res.search_freedom_neighbour(structure_grid)
     else:
