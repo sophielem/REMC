@@ -14,6 +14,6 @@ class End_moves(Movement.Movement):
       return freedom_neighbour_list[random_neighbour]
 
 
-  def __init__(self, res):
-      Movement.Movement.__init__(self)
+  def __init__(self, res, i):
+      Movement.Movement.__init__(self, i)
       self.residu = res

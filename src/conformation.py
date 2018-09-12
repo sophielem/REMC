@@ -12,8 +12,9 @@ import End_moves
 
 
 def vshd_move(index, structure_grid, residues):
-    if index == 0 or residu == (cA.LEN_SEQ - 1):
-        test = End_moves.End_moves(residues[index])
+    rep = None
+    if index == 0 or index == (cA.LEN_SEQ - 1):
+        test = End_moves.End_moves(residues[index], index)
         rep = test.functii(structure_grid)
     else:
         prob = random.random()
@@ -21,15 +22,7 @@ def vshd_move(index, structure_grid, residues):
             crankshaft_moves(index)
         else:
             corner_moves(index)
-
-    if rep != None:
-        if Movement.changeGrid(test, structure_grid, residues, rep, index):
-            # Attribution des nouvelles coordonnées
-            pass
-        else:
-            # Probabilite de transition
-            pass
-    return None
+    return rep
 
 
 def crankshaft_moves(residu):
