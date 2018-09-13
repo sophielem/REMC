@@ -39,3 +39,6 @@ def check_arguments(argv):
     if not MOVE_SET in ("VSHD", "PULLMOVES", "MIXE"):
         print("You can choose between VSHD, PULLMOVES and MIXE movement set.")
         sys.exit(2)
+
+    global TEMPERATURE
+    TEMPERATURE = check_int_type(argv["--temperature"])

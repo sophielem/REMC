@@ -2,15 +2,16 @@
 """REMC script
 
 Usage:
-  main.py -s <seq> -e <x> -t <nb_steps> -m <move>
+  main.py -s <seq> -e <x> -p <nb_steps> -m <move> -t <temp>
 
 Options:
   -h --help                  help
   --version                  version of the script
-  -s --sequence = seq        hgjgjhgjh
-  -e --energy = x            hgjgjhgjh
-  -t --steps = nb_steps      hgjgjhgjh
+  -s --sequence = seq        write the sequence according to HP model
+  -e --energy = x            write the mminimum energy to reach
+  -p --steps = nb_steps      the maximum steps
   -m --movement = move       VSHD, PULLMOVES or MIXE
+  -t --temperature = temp    the temperature
 """
 
 import random
@@ -82,13 +83,12 @@ if __name__ == '__main__':
                 energy = energy_new
 
         # Otherwise, calculate the probability to accept anyway the new conformation
-            """else:
-          prob_random = random.random()
-          TEMPERATURE = 160
-          if prob_random >= math.exp(-(energy_new - energy) / TEMPERATURE):
-            residues = new_conformation[0]
-            structure_grid = new_conformation[1]
-            energy = energy_new"""
+            else:
+              prob_random = random.random()
+              if prob_random >= math.exp(-(energy_new - energy) / cA.TEMPERATURE):
+                residues = new_conformation[0]
+                structure_grid = new_conformation[1]
+                energy = energy_new
         nb_steps = nb_steps + 1
 
     for i in structure_grid:
