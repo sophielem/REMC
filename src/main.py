@@ -16,12 +16,15 @@ Options:
 
 import random
 import math
+import os
+import matplotlib.pyplot as plt
 from docopt import docopt
 import conformation
 import checkingArgument as cA
 from Residu import *
 from Movement import *
 
+DEBUG = True
 
 def initialization():
     """ Initialization of the lattice and residues object
@@ -43,6 +46,30 @@ def initialization():
     # the last residu has not next residu
     residues[i].next_res = None
     return residues
+
+
+def display(residues, energy):
+    lines = []
+    columns = []
+    hp = []
+    # Create list for line and column
+    for entry in residues:
+        lines.append(entry.line)
+        columns.append(entry.column)
+        # Retrieve hp for color each point
+        if entry.hp == "H":
+            hp.append('r')
+        else:
+            hp.append('b')
+    # Create the directory results if it does not exist
+    if not os.path.exists("../results"):
+        os.makedirs("../results")
+
+    plt.scatter(columns, lines, color=hp, zorder=2, s=400)
+    plt.plot(columns, lines, 'grey', zorder=1)
+    plt.title('Optimal conformation found\n Energy : {}'.format(energy))
+    plt.savefig("../results/conformation.png")
+    plt.show()
 
 
 if __name__ == '__main__':
@@ -91,11 +118,14 @@ if __name__ == '__main__':
                 energy = energy_new
         nb_steps = nb_steps + 1
 
-    for i in structure_grid:
-        for j in i:
-            if j != -1:
-                print("{0:2d}".format(j), end='')
-            else:
-                print("  ", end='')
-        print("")
-    print(energy)
+
+    if DEBUG:
+        for i in structure_grid:
+            for j in i:
+                if j != -1:
+                    print("{0:2d}".format(j), end='')
+                else:
+                    print("  ", end='')
+            print("")
+        print(energy)
+    display(residues, energy)
