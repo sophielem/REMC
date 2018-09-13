@@ -18,6 +18,7 @@ import random
 import math
 import os
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 from docopt import docopt
 import conformation
 import checkingArgument as cA
@@ -25,6 +26,7 @@ from Residu import *
 from Movement import *
 
 DEBUG = True
+
 
 def initialization():
     """ Initialization of the lattice and residues object
@@ -39,7 +41,7 @@ def initialization():
         if i != 0:
             # the residu object now is the following of residu previous
             previous.next_res = now
-           # the residu previous is the previous of residu now
+        # the residu previous is the previous of residu now
         now.previous_res = previous
         residues.append(now)
         previous = now
@@ -61,13 +63,17 @@ def display(residues, energy):
             hp.append('r')
         else:
             hp.append('b')
+    # Add a z axe to product a 3D plot
+    z_axe = [0] * len(lines)
     # Create the directory results if it does not exist
     if not os.path.exists("../results"):
         os.makedirs("../results")
 
-    plt.scatter(columns, lines, color=hp, zorder=2, s=400)
-    plt.plot(columns, lines, 'grey', zorder=1)
-    plt.title('Optimal conformation found\n Energy : {}'.format(energy))
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.scatter(columns, lines, z_axe, color=hp, zorder=2, s=400)
+    plt.plot(columns, lines, z_axe, zorder=1)
+    plt.title("Optimal conformation found\n Energy : {}".format(energy))
     plt.savefig("../results/conformation.png")
     plt.show()
 
@@ -87,7 +93,8 @@ if __name__ == '__main__':
         # Movement
         move = Movement(index)
         if cA.MOVE_SET == "VSHD":
-            # the lattice and residues object with the mutation if it is possible
+            # the lattice and residues object with the mutation
+            # if it is possible
             new_conformation = conformation.vshd_move(
                 index, structure_grid, residues)
 
@@ -98,7 +105,7 @@ if __name__ == '__main__':
             conformation.mixe_move(index, structure_grid)
 
         # The movement is possible, the new energy is calculated
-        if new_conformation != None:
+        if new_conformation is not None:
             energy_new = move.countBonds(
                 new_conformation[1], new_conformation[0])
 
@@ -109,15 +116,16 @@ if __name__ == '__main__':
                 structure_grid = new_conformation[1]
                 energy = energy_new
 
-        # Otherwise, calculate the probability to accept anyway the new conformation
+        # Otherwise, calculate the probability to accept
+        # anyway the new conformation
             else:
-              prob_random = random.random()
-              if prob_random >= math.exp(-(energy_new - energy) / cA.TEMPERATURE):
-                residues = new_conformation[0]
-                structure_grid = new_conformation[1]
-                energy = energy_new
+                prob_random = random.random()
+                if prob_random >= math.exp(-(energy_new - energy) /
+                   cA.TEMPERATURE):
+                    residues = new_conformation[0]
+                    structure_grid = new_conformation[1]
+                    energy = energy_new
         nb_steps = nb_steps + 1
-
 
     if DEBUG:
         for i in structure_grid:
