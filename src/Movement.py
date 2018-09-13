@@ -31,7 +31,7 @@ class Movement():
 
             for idx in index:
                 # check neighbour is not adjacent in the sequence, it's hydrophob and not already counted
-                if (idx != res + 1) and (idx != res - 1) and (residues[idx].hp == 'H') and (not sorted([idx, res]) in counted_bond):
+                if (idx != res + 1) and (idx != res - 1) and (idx != -1) and (residues[idx].hp == 'H') and (not sorted([idx, res]) in counted_bond):
                     counted_bond.append(sorted([idx, res]))
                     bonds -= 1
 
