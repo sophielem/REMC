@@ -36,7 +36,7 @@ def check_arguments(argv):
 
     global MOVE_SET
     MOVE_SET = argv["--movement"]
-    if not MOVE_SET in ("VSHD", "PULLMOVES", "MIXE"):
+    if MOVE_SET not in ("VSHD", "PULLMOVES", "MIXE"):
         print("You can choose between VSHD, PULLMOVES and MIXE movement set.")
         sys.exit(2)
 

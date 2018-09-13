@@ -30,8 +30,11 @@ class Movement():
                 structure_grid[residues[res].line - 1][residues[res].column])
 
             for idx in index:
-                # check neighbour is not adjacent in the sequence, it's hydrophob and not already counted
-                if (idx != res + 1) and (idx != res - 1) and (idx != -1) and (residues[idx].hp == 'H') and (not sorted([idx, res]) in counted_bond):
+                # check neighbour is not adjacent in the sequence,
+                # it's hydrophob and not already counted
+                if ((idx != res + 1) and (idx != res - 1) and
+                   (idx != -1) and (residues[idx].hp == 'H') and
+                   (not sorted([idx, res]) in counted_bond)):
                     counted_bond.append(sorted([idx, res]))
                     bonds -= 1
 
@@ -59,7 +62,7 @@ class Movement():
         """ Change the conformation of two residues.
             Return the new conformation and reidues objet modified.
         """
-        cote = random_neighbour[2]
+        delta = random_neighbour[2]
         # copy residues and the lattice, assign the new conformation
         structure_grid_new = copy.deepcopy(structure_grid)
         # the old positions of residues become empty
@@ -68,17 +71,17 @@ class Movement():
                            ][random_neighbour[0]['column']] = self.index
         # Second residu
         structure_grid_new[residues[self.index +
-                                    cote].line][residues[self.index + cote].column] = -1
+                                    delta].line][residues[self.index + delta].column] = -1
         structure_grid_new[random_neighbour[1]['line']
-                           ][random_neighbour[1]['column']] = self.index + cote
+                           ][random_neighbour[1]['column']] = self.index + delta
 
         residues_new = copy.deepcopy(residues)
         # Assignementof new coordinates
         residues_new[self.index].line = random_neighbour[0]['line']
         residues_new[self.index].column = random_neighbour[0]['column']
         # Second residu
-        residues_new[self.index + cote].line = random_neighbour[1]['line']
-        residues_new[self.index + cote].column = random_neighbour[1]['column']
+        residues_new[self.index + delta].line = random_neighbour[1]['line']
+        residues_new[self.index + delta].column = random_neighbour[1]['column']
 
         return [residues_new, structure_grid_new]
 

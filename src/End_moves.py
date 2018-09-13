@@ -4,12 +4,14 @@ import Movement
 
 
 class End_moves(Movement.Movement):
-    """ The residue is pivoted relative to its connected neighbour to a free position adjacent to that neighbour.
+    """ The residue is pivoted relative to its connected
+        neighbour to a free position adjacent to that neighbour.
     """
 
     def mutation(self, structure_grid):
-        """ Search free neighbour for the residu adjacent. If several positions are free, on
-        is chosen randomly and the residu is pivoted to this position.
+        """ Search free neighbour for the residu adjacent.
+            If several positions are free, on
+            is chosen randomly and the residu is pivoted to this position.
         """
         if self.index == 0:
             freedom_neighbour_list = self.residu.next_res.search_free_neighbour(

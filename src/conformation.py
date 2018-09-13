@@ -24,7 +24,7 @@ def vshd_move(index, structure_grid, residues):
         move = End_moves.End_moves(residues[index], index)
         mutation_residu = move.mutation(structure_grid)
         # The mutation is possible because a neighbour is free
-        if mutation_residu != None:
+        if mutation_residu is not None:
             new_conformation = move.changeOneResidu(
                 structure_grid, residues, mutation_residu)
     else:
@@ -33,13 +33,13 @@ def vshd_move(index, structure_grid, residues):
         if prob >= 0.5:
             move = Crankshaft_moves.Crankshaft_moves(residues[index], index)
             mutation_residu = move.mutation(structure_grid)
-            if mutation_residu != None:
+            if mutation_residu is not None:
                 new_conformation = move.changeTwoResidues(
                     structure_grid, residues, mutation_residu)
         else:
             move = Corner_moves.Corner_moves(residues[index], index)
             mutation_residu = move.mutation(structure_grid)
-            if mutation_residu != None:
+            if mutation_residu is not None:
                 new_conformation = move.changeOneResidu(
                     structure_grid, residues, mutation_residu)
     return new_conformation
