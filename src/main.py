@@ -55,7 +55,7 @@ if __name__ == '__main__':
 
     while nb_steps < cA.NB_STEPS:
         index = random.randint(0, cA.LEN_SEQ - 1)
-        index = 1
+
         # Movement
         move = Movement(index)
         if cA.MOVE_SET == "VSHD":
@@ -90,4 +90,12 @@ if __name__ == '__main__':
             structure_grid = new_conformation[1]
             energy = energy_new"""
         nb_steps = nb_steps + 1
-    print(structure_grid)
+
+    for i in structure_grid:
+        for j in i:
+            if j != -1:
+                print("{0:2d}".format(j), end='')
+            else:
+                print("  ", end='')
+        print("")
+    print(energy)
