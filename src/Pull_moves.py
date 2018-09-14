@@ -16,71 +16,75 @@ class Pull_moves(Movement.Movement):
         second_residu = None
         for offset in [1, -1]:
             if i == 0:
+                # if the neighbour is on the column to the right or left of j, then the second residu to move is j
                 if (structure_grid[j][idx + offset] == elmt[j] + offset or
                    structure_grid[j][idx - offset] == elmt[j] + offset):
-                    a = elmt[j] + offset
+                    idx_ngh = elmt[j] + offset
                     second_residu = elmt[j]
-                    return [a, second_residu]
+                    return [idx_ngh, second_residu]
+
+                # if the neighbour is on the column to the right or left of j+2, then the second residu to move is j+2
                 elif (structure_grid[j+2][idx + offset] == elmt[j+2] + offset or
                       structure_grid[j+2][idx - offset] == elmt[j+2] + offset):
-                    a = elmt[j+2] + offset
+                    idx_ngh = elmt[j+2] + offset
                     second_residu = elmt[j+2]
-                    return [a, second_residu]
+                    return [idx_ngh, second_residu]
                 else:
-                    a = None
+                    idx_ngh = None
 
             else:
+                # if the neighbour is on the line above or below j, then the second residu to move is j
                 if (structure_grid[idx + offset][j] == elmt[j] + offset or
                    structure_grid[idx - offset][j] == elmt[j] + offset):
-                    # si le voisin se trouve sur la ligne au dessus de j,
-                    # alors le second residu à bouger est j
-                    a = elmt[j] + offset
+                    idx_ngh = elmt[j] + offset
                     second_residu = elmt[j]
-                    return [a, second_residu]
+                    return [idx_ngh, second_residu]
+
+              # if the neighbour is on the line above or below j+2, then the second residu to move is j+2
                 elif (structure_grid[idx + offset][j+2] == elmt[j+2] + offset or
                       structure_grid[idx - offset][j+2] == elmt[j+2] + offset):
-                    # si le voisin se trouve sur la ligne au dessus de j+2,
-                    # alors le second residu à bouger est j+2
-                    a = elmt[+2j] + offset
+                    idx_ngh = elmt[+2j] + offset
                     second_residu = elmt[j+2]
-                    return [a, second_residu]
+                    return [idx_ngh, second_residu]
                 else:
-                    a = None
+                    idx_ngh = None
 
-        return [a, second_residu]
+        return [idx_ngh, second_residu]
 
-    def __checkNeighboursFree(self, structure_grid, a, j, second_residu, i):
+    def __checkNeighboursFree(self, structure_grid, res_a, j, second_residu, i):
         """ Check if the 2 neighbours in the same line or column of residu a are free.
             If so, the conformation is correct to do the pull move.
         """
         if i == 0:
-            if a.line == j:
-                if (structure_grid[a.line + 1][a.column] == -1 and
-                   structure_grid[a.line + 2][a.column] == -1):
-                    # Les 2 emplacements vides, et le deuxieme residu à bouger
-                    return [{'line': a.line + 2, 'column': a.column},
-                            {'line': a.line + 1, 'column': a.column},
+            if res_a.line == j:
+                # check if, on the same column, neighbour below res_a are free
+                if (structure_grid[res_a.line + 1][res_a.column] == -1 and
+                   structure_grid[res_a.line + 2][res_a.column] == -1):
+                   # The 2 empty positions, and the second residu to move
+                    return [{'line': res_a.line + 2, 'column': res_a.column},
+                            {'line': res_a.line + 1, 'column': res_a.column},
                             second_residu - self.index]
             else:
-                if (structure_grid[a.line - 1][a.column] == -1 and
-                   structure_grid[a.line - 2][a.column] == -1):
-                    return [{'line': a.line - 2, 'column': a.column},
-                            {'line': a.line - 1, 'column': a.column},
+                # check if, on the same column, neighbour above res_a are free
+                if (structure_grid[res_a.line - 1][res_a.column] == -1 and
+                   structure_grid[res_a.line - 2][res_a.column] == -1):
+                    return [{'line': res_a.line - 2, 'column': res_a.column},
+                            {'line': res_a.line - 1, 'column': res_a.column},
                             second_residu - self.index]
         else:
-            if a.column == j:
-                if (structure_grid[a.line][a.column + 1] == -1 and
-                   structure_grid[a.line][a.column + 2] == -1):
-                    # Les 2 emplacements vides, et le deuxieme residu à bouger
-                    return [{'line': a.line, 'column': a.column + 2},
-                            {'line': a.line, 'column': a.column + 1},
+            if res_a.column == j:
+                # check if, on the same line, neighbour to the right res_a are free
+                if (structure_grid[res_a.line][res_a.column + 1] == -1 and
+                   structure_grid[res_a.line][res_a.column + 2] == -1):
+                    return [{'line': res_a.line, 'column': res_a.column + 2},
+                            {'line': res_a.line, 'column': res_a.column + 1},
                             second_residu - self.index]
             else:
-                if (structure_grid[a.line][a.column - 1] == -1 and
-                   structure_grid[a.line][a.column - 2] == -1):
-                    # Les 2 emplacements vides, et le deuxieme residu à bouger
-                    return [{'line': a.line, 'column': a.column - 2},
-                            {'line': a.line, 'column': a.column - 1},
+                # check if, on the same line, neighbour to the left res_a are free
+                if (structure_grid[res_a.line][res_a.column - 1] == -1 and
+                   structure_grid[res_a.line][res_a.column - 2] == -1):
+                    return [{'line': res_a.line, 'column': res_a.column - 2},
+                            {'line': res_a.line, 'column': res_a.column - 1},
                             second_residu - self.index]
         return None
 
@@ -108,21 +112,19 @@ class Pull_moves(Movement.Movement):
             for j in range(len(elmt)):
                 if elmt[j] != -1 and elmt[j] != 0:
                     if elmt[j+1] == self.index and elmt[j+2] != -1:
-                        print("coord", j, idx)
-                        print(elmt[j+1], elmt[j+2])
                         flag = True
                         break
             i += 1
 
         if flag:
             # Check if the residu j has an occupied neighbour
-            a, second_residu = self.__findNeighbourOccupied(structure_grid,
+            idx_ngh, second_residu = self.__findNeighbourOccupied(structure_grid,
                                                             j, idx, elmt, i)
 
-            if a is not None:
+            if idx_ngh is not None:
                 # Check if residu a has 2 free neighbours
                 return self.__checkNeighboursFree(structure_grid,
-                                                  residues[a], j, second_residu, i)
+                                                  residues[idx_ngh], j, second_residu, i)
 
         return None
 
