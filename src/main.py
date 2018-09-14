@@ -99,10 +99,10 @@ if __name__ == '__main__':
                 index, structure_grid, residues)
 
         elif cA.MOVE_SET == "PULLMOVES":
-            conformation.pullmoves_move(index, structure_grid)
+            new_conformation = conformation.pullmoves_move(index, structure_grid, residues)
 
         else:
-            conformation.mixe_move(index, structure_grid)
+            new_conformation = conformation.mixe_move(index, structure_grid, residues)
 
         # The movement is possible, the new energy is calculated
         if new_conformation is not None:
