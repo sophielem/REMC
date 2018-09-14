@@ -1,0 +1,97 @@
+\hypertarget{namespacemain}{}\section{main Namespace Reference}
+\label{namespacemain}\index{main@{main}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacemain_a36aaa6fc324305b9b0013cabac87a440}{initialization} ()
+\item 
+\mbox{\Hypertarget{namespacemain_a51783205174f755b91f28ed9ab2fe195}\label{namespacemain_a51783205174f755b91f28ed9ab2fe195}} 
+def {\bfseries display} (residues, energy)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacemain_ad2cce3c3d1036d38f161e4814c97e1b5}\label{namespacemain_ad2cce3c3d1036d38f161e4814c97e1b5}} 
+bool {\bfseries D\+E\+B\+UG} = True
+\item 
+\mbox{\Hypertarget{namespacemain_a67a4a2ee96191c0257e4744c29dacebf}\label{namespacemain_a67a4a2ee96191c0257e4744c29dacebf}} 
+list {\bfseries structure\+\_\+grid} = \mbox{[}\mbox{[}-\/1\mbox{]} $\ast$ (4 $\ast$ c\+A.\+L\+E\+N\+\_\+\+S\+EQ) for i in range(4 $\ast$ c\+A.\+L\+E\+N\+\_\+\+S\+EQ)\mbox{]}
+\item 
+\mbox{\Hypertarget{namespacemain_aa03ea582ff8e07a50e1d850a94da8247}\label{namespacemain_aa03ea582ff8e07a50e1d850a94da8247}} 
+def {\bfseries residues} = \hyperlink{namespacemain_a36aaa6fc324305b9b0013cabac87a440}{initialization}()
+\item 
+\mbox{\Hypertarget{namespacemain_acf3ae58f7e5852d1a97cf6724b61b22f}\label{namespacemain_acf3ae58f7e5852d1a97cf6724b61b22f}} 
+int {\bfseries energy} = 0
+\item 
+\mbox{\Hypertarget{namespacemain_a7610361849a3e9841a1fda5a35cbf08c}\label{namespacemain_a7610361849a3e9841a1fda5a35cbf08c}} 
+int {\bfseries nb\+\_\+steps} = 0
+\item 
+\mbox{\Hypertarget{namespacemain_ad27810fad03b934ace3a471c21bbf5f6}\label{namespacemain_ad27810fad03b934ace3a471c21bbf5f6}} 
+{\bfseries index} = random.\+randint(0, c\+A.\+L\+E\+N\+\_\+\+S\+EQ -\/ 1)
+\item 
+\mbox{\Hypertarget{namespacemain_abd2ad656597053996e03e3e64fcfa224}\label{namespacemain_abd2ad656597053996e03e3e64fcfa224}} 
+{\bfseries move} = \hyperlink{classMovement_1_1Movement}{Movement}(index)
+\item 
+{\bfseries new\+\_\+conformation}
+\item 
+{\bfseries energy\+\_\+new}
+\item 
+\mbox{\Hypertarget{namespacemain_a3347eebfe7bf1b0e0047d6b3ec5f3337}\label{namespacemain_a3347eebfe7bf1b0e0047d6b3ec5f3337}} 
+{\bfseries prob\+\_\+random} = random.\+random()
+\item 
+\mbox{\Hypertarget{namespacemain_ada24c0f5d143f130aceaf05ae35895fd}\label{namespacemain_ada24c0f5d143f130aceaf05ae35895fd}} 
+{\bfseries end}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}REMC script
+
+Usage:
+  main.py -s <seq> -e <x> -p <nb_steps> -m <move> -t <temp>
+
+Options:
+  -h --help                  help
+  --version                  version of the script
+  -s --sequence = seq        write the sequence according to HP model
+  -e --energy = x            write the mminimum energy to reach
+  -p --steps = nb_steps      the maximum steps
+  -m --movement = move       VSHD, PULLMOVES or MIXE
+  -t --temperature = temp    the temperature
+\end{DoxyVerb}
+ 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacemain_a36aaa6fc324305b9b0013cabac87a440}\label{namespacemain_a36aaa6fc324305b9b0013cabac87a440}} 
+\index{main@{main}!initialization@{initialization}}
+\index{initialization@{initialization}!main@{main}}
+\subsubsection{\texorpdfstring{initialization()}{initialization()}}
+{\footnotesize\ttfamily def main.\+initialization (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialization of the lattice and residues object
+\end{DoxyVerb}
+ 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacemain_ad91de1ede17491633ae697d2af396fd4}\label{namespacemain_ad91de1ede17491633ae697d2af396fd4}} 
+\index{main@{main}!energy\+\_\+new@{energy\+\_\+new}}
+\index{energy\+\_\+new@{energy\+\_\+new}!main@{main}}
+\subsubsection{\texorpdfstring{energy\+\_\+new}{energy\_new}}
+{\footnotesize\ttfamily main.\+energy\+\_\+new}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  move.countBonds(
+2                 new\_conformation[1], new\_conformation[0])
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemain_a6eff59da229c3c5e4a58a7d6b48be5bc}\label{namespacemain_a6eff59da229c3c5e4a58a7d6b48be5bc}} 
+\index{main@{main}!new\+\_\+conformation@{new\+\_\+conformation}}
+\index{new\+\_\+conformation@{new\+\_\+conformation}!main@{main}}
+\subsubsection{\texorpdfstring{new\+\_\+conformation}{new\_conformation}}
+{\footnotesize\ttfamily main.\+new\+\_\+conformation}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  \hyperlink{namespaceconformation_a68e0c087ab604cbc37a7fe9a27622d8c}{conformation.vshd\_move}(
+2                 index, structure\_grid, residues)
+\end{DoxyCode}

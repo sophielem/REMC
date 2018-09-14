@@ -1,0 +1,81 @@
+\hypertarget{classMovement_1_1Movement}{}\section{Movement.\+Movement Class Reference}
+\label{classMovement_1_1Movement}\index{Movement.\+Movement@{Movement.\+Movement}}
+
+
+Inheritance diagram for Movement.\+Movement\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMovement_1_1Movement__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classMovement_1_1Movement_a9a5855cfc798666c18371ea030ae54a7}{count\+Bonds} (self, structure\+\_\+grid, residues)
+\item 
+def \hyperlink{classMovement_1_1Movement_ac3dec9f23b8e853ac5101535ee804767}{change\+One\+Residu} (self, structure\+\_\+grid, residues, random\+\_\+neighbour)
+\item 
+def \hyperlink{classMovement_1_1Movement_a9052fb0d7d5328a995abee94111d9fcc}{change\+Two\+Residues} (self, structure\+\_\+grid, residues, random\+\_\+neighbour)
+\item 
+def \hyperlink{classMovement_1_1Movement_a30e499b5ab0257aac5ee77dc24c161b5}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, i)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMovement_1_1Movement_a8972b130eb57f4921311faf370d11c79}\label{classMovement_1_1Movement_a8972b130eb57f4921311faf370d11c79}} 
+{\bfseries index}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Mother class of all movements.
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMovement_1_1Movement_a30e499b5ab0257aac5ee77dc24c161b5}\label{classMovement_1_1Movement_a30e499b5ab0257aac5ee77dc24c161b5}} 
+\index{Movement\+::\+Movement@{Movement\+::\+Movement}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!Movement\+::\+Movement@{Movement\+::\+Movement}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Movement.\+Movement.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{i }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize the object Movement
+    :param   i: index of the Residu object
+\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMovement_1_1Movement_ac3dec9f23b8e853ac5101535ee804767}\label{classMovement_1_1Movement_ac3dec9f23b8e853ac5101535ee804767}} 
+\index{Movement\+::\+Movement@{Movement\+::\+Movement}!change\+One\+Residu@{change\+One\+Residu}}
+\index{change\+One\+Residu@{change\+One\+Residu}!Movement\+::\+Movement@{Movement\+::\+Movement}}
+\subsubsection{\texorpdfstring{change\+One\+Residu()}{changeOneResidu()}}
+{\footnotesize\ttfamily def Movement.\+Movement.\+change\+One\+Residu (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{residues,  }\item[{}]{random\+\_\+neighbour }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Change the conformation of one residu.
+    Return the new conformation and residues obejct modified.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classMovement_1_1Movement_a9052fb0d7d5328a995abee94111d9fcc}\label{classMovement_1_1Movement_a9052fb0d7d5328a995abee94111d9fcc}} 
+\index{Movement\+::\+Movement@{Movement\+::\+Movement}!change\+Two\+Residues@{change\+Two\+Residues}}
+\index{change\+Two\+Residues@{change\+Two\+Residues}!Movement\+::\+Movement@{Movement\+::\+Movement}}
+\subsubsection{\texorpdfstring{change\+Two\+Residues()}{changeTwoResidues()}}
+{\footnotesize\ttfamily def Movement.\+Movement.\+change\+Two\+Residues (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{residues,  }\item[{}]{random\+\_\+neighbour }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Change the conformation of two residues.
+    Return the new conformation and reidues objet modified.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classMovement_1_1Movement_a9a5855cfc798666c18371ea030ae54a7}\label{classMovement_1_1Movement_a9a5855cfc798666c18371ea030ae54a7}} 
+\index{Movement\+::\+Movement@{Movement\+::\+Movement}!count\+Bonds@{count\+Bonds}}
+\index{count\+Bonds@{count\+Bonds}!Movement\+::\+Movement@{Movement\+::\+Movement}}
+\subsubsection{\texorpdfstring{count\+Bonds()}{countBonds()}}
+{\footnotesize\ttfamily def Movement.\+Movement.\+count\+Bonds (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{residues }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Counts the number of bonds. For each bond, an energy of -1 is summed.
+    Return the total energy.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Movement.\+py\end{DoxyCompactItemize}
