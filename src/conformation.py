@@ -56,7 +56,8 @@ def pullmoves_move(index, structure_grid, residues):
     move = Pull_moves.Pull_moves(residues[index], index)
     mutation_residu = move.mutation(structure_grid, residues)
     if mutation_residu is not None:
-        new_conformation = move.changeTwoResidues(structure_grid, residues, mutation_residu)
+        new_conformation = move.changeTwoResidues(structure_grid,
+                                                  residues, mutation_residu)
     if new_conformation is not None:
         for i in structure_grid:
             for j in i:
@@ -89,7 +90,7 @@ def mixe_move(index, structure_grid, residues):
         #     # pull movement
         #     endpull_moves(residu)
         # else:
-    # vshd movement
+        # vshd movement
         move = End_moves.End_moves(residues[index], index)
         mutation_residu = move.mutation(structure_grid)
         # The mutation is possible because a neighbour is free
@@ -104,7 +105,8 @@ def mixe_move(index, structure_grid, residues):
             # vshd movement
             prob = random.random()
             if prob >= 0.5:
-                move = Crankshaft_moves.Crankshaft_moves(residues[index], index)
+                move = Crankshaft_moves.Crankshaft_moves(residues[index],
+                                                         index)
                 mutation_residu = move.mutation(structure_grid)
                 if mutation_residu is not None:
                     new_conformation = move.changeTwoResidues(

@@ -48,17 +48,20 @@ class Crankshaft_moves(Movement.Movement):
                     delta = getattr(previous, attribut[i]) -\
                             getattr(self.residu, attribut[i])
                     if (structure_grid[getattr(self.residu, attribut2[i])]
-                                      [getattr(previous, attribut[i]) + delta] == -1 and
+                                      [getattr(previous, attribut[i]) +
+                                       delta] == -1 and
                         structure_grid[getattr(next, attribut2[i])]
-                                      [getattr(following, attribut[i]) + delta] == -1):
-                        return [{attribut2[i]: getattr(self.residu, attribut2[i]),
-                                attribut[i]: getattr(previous, attribut[i]) + delta},
+                                      [getattr(following, attribut[i]) +
+                                       delta] == -1):
+                        return [{attribut2[i]: getattr(self.residu,
+                                 attribut2[i]), attribut[i]:
+                                 getattr(previous, attribut[i]) + delta},
                                 {attribut2[i]: getattr(next, attribut2[i]),
-                                attribut[i]: getattr(following, attribut[i]) + delta}, 1]
+                                attribut[i]: getattr(following, attribut[i]) +
+                                delta}, 1]
             i += 1
 
         return None
-
 
     def __init__(self, res, i):
         """ Initialize the object Crankshaft_moves

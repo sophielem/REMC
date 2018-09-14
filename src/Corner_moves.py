@@ -22,7 +22,8 @@ class Corner_moves(Movement.Movement):
         # Find the free neighbour common to residues i+1 and i-1
         for ngh_p in freedom_neighbour_prev:
             for ngh_n in freedom_neighbour_next:
-                if ngh_p['line'] == ngh_n['line'] and ngh_p['column'] == ngh_n['column']:
+                if (ngh_p['line'] == ngh_n['line'] and
+                   ngh_p['column'] == ngh_n['column']):
                     freedom_neighbour_list.append(ngh_p)
         # If none neighbour are common, return none
         if freedom_neighbour_list == []:
