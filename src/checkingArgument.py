@@ -42,3 +42,6 @@ def check_arguments(argv):
 
     global TEMPERATURE
     TEMPERATURE = check_int_type(argv["--temperature"])
+
+    global REPLICA
+    REPLICA = check_int_type(argv["--replica"])
