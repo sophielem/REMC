@@ -66,3 +66,4 @@ if __name__ == '__main__':
 
     for idx, replica in enumerate(replicates):
         display(replica["sequence"], replica["energy"], idx)
+    

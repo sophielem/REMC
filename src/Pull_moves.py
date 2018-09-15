@@ -43,7 +43,7 @@ class Pull_moves(Movement.Movement):
               # if the neighbour is on the line above or below j+2, then the second residu to move is j+2
                 elif (structure_grid[idx + offset][j+2] == elmt[j+2] + offset or
                       structure_grid[idx - offset][j+2] == elmt[j+2] + offset):
-                    idx_ngh = elmt[+2j] + offset
+                    idx_ngh = elmt[j+2] + offset
                     second_residu = elmt[j+2]
                     return [idx_ngh, second_residu]
                 else:

@@ -108,7 +108,7 @@ def REMCSimulation(energy, nb_steps, offset, replicates):
             if replica["energy"] < energy:
                 energy = replica["energy"]
         nb_steps = nb_steps + 1
-        
+
         # offset indicate if the replica is swap with its superior or its inferior replica
         i = offset
         while i+1 < cA.REPLICA:
@@ -125,4 +125,7 @@ def REMCSimulation(energy, nb_steps, offset, replicates):
             i = i + 2
         offset = 1 - offset
 
+    print("***************************************")
+    print("   The best energy found is {}".format(energy))
+    print("***************************************")
     return replicates

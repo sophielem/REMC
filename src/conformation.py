@@ -58,23 +58,6 @@ def pullmoves_move(index, structure_grid, residues):
     if mutation_residu is not None:
         new_conformation = move.changeTwoResidues(structure_grid,
                                                   residues, mutation_residu)
-    if new_conformation is not None:
-        for i in structure_grid:
-            for j in i:
-                if j != -1:
-                    print("{0:2d}".format(j), end='')
-                else:
-                    print("  ", end='')
-            print("")
-
-        print("\nNEW : ")
-        for i in new_conformation[1]:
-            for j in i:
-                if j != -1:
-                    print("{0:2d}".format(j), end='')
-                else:
-                    print("  ", end='')
-            print("")
     return new_conformation
 
 
