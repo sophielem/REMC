@@ -4,15 +4,15 @@
     Then, launch the most appropriate movement.
 """
 
-import checkingArgument as cA
+import checking_argument as cA
 import random
 import copy
-import Residu
-import Movement
-import End_moves
-import Corner_moves
-import Crankshaft_moves
-import Pull_moves
+import residu
+import movement
+import end_moves
+import corner_moves
+import crankshaft_moves
+import pull_moves
 
 
 def vshd_move(index, structure_grid, residues):
@@ -22,26 +22,26 @@ def vshd_move(index, structure_grid, residues):
     new_conformation = None
     # If the residu is the first or the last
     if index == 0 or index == (cA.LEN_SEQ - 1):
-        move = End_moves.End_moves(residues[index], index)
+        move = end_moves.end_moves(residues[index], index)
         mutation_residu = move.mutation(structure_grid)
         # The mutation is possible because a neighbour is free
         if mutation_residu is not None:
-            new_conformation = move.changeOneResidu(
+            new_conformation = move.changeOneresidu(
                 structure_grid, residues, mutation_residu)
     else:
         # Choose randomly between corner or crankshaft movement
         prob = random.random()
         if prob >= 0.5:
-            move = Crankshaft_moves.Crankshaft_moves(residues[index], index)
+            move = crankshaft_moves.crankshaft_moves(residues[index], index)
             mutation_residu = move.mutation(structure_grid)
             if mutation_residu is not None:
-                new_conformation = move.changeTwoResidues(
+                new_conformation = move.changeTworesidues(
                     structure_grid, residues, mutation_residu)
         else:
-            move = Corner_moves.Corner_moves(residues[index], index)
+            move = corner_moves.corner_moves(residues[index], index)
             mutation_residu = move.mutation(structure_grid)
             if mutation_residu is not None:
-                new_conformation = move.changeOneResidu(
+                new_conformation = move.changeOneresidu(
                     structure_grid, residues, mutation_residu)
     return new_conformation
 
@@ -53,10 +53,10 @@ def pullmoves_move(index, structure_grid, residues):
         Return a list with the new lattice and the new residues object
     """
     new_conformation = None
-    move = Pull_moves.Pull_moves(residues[index], index)
+    move = pull_moves.pull_moves(residues[index], index)
     mutation_residu = move.mutation(structure_grid, residues)
     if mutation_residu is not None:
-        new_conformation = move.changeTwoResidues(structure_grid,
+        new_conformation = move.changeTworesidues(structure_grid,
                                                   residues, mutation_residu)
     return new_conformation
 
@@ -74,11 +74,11 @@ def mixe_move(index, structure_grid, residues):
         #     endpull_moves(residu)
         # else:
         # vshd movement
-        move = End_moves.End_moves(residues[index], index)
+        move = end_moves.end_moves(residues[index], index)
         mutation_residu = move.mutation(structure_grid)
         # The mutation is possible because a neighbour is free
         if mutation_residu is not None:
-            new_conformation = move.changeOneResidu(
+            new_conformation = move.changeOneresidu(
                 structure_grid, residues, mutation_residu)
     else:
         if prob <= 0.4:
@@ -88,17 +88,17 @@ def mixe_move(index, structure_grid, residues):
             # vshd movement
             prob = random.random()
             if prob >= 0.5:
-                move = Crankshaft_moves.Crankshaft_moves(residues[index],
+                move = crankshaft_moves.crankshaft_moves(residues[index],
                                                          index)
                 mutation_residu = move.mutation(structure_grid)
                 if mutation_residu is not None:
-                    new_conformation = move.changeTwoResidues(
+                    new_conformation = move.changeTworesidues(
                         structure_grid, residues, mutation_residu)
             else:
-                move = Corner_moves.Corner_moves(residues[index], index)
+                move = corner_moves.corner_moves(residues[index], index)
                 mutation_residu = move.mutation(structure_grid)
                 if mutation_residu is not None:
-                    new_conformation = move.changeOneResidu(
+                    new_conformation = move.changeOneresidu(
                         structure_grid, residues, mutation_residu)
 
     return new_conformation

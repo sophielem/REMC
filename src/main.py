@@ -20,8 +20,9 @@ import os
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from docopt import docopt
-import checkingArgument as cA
-import monteCarlo as MC
+import checking_argument as cA
+import monte_carlo as MC
+import time
 
 
 def display(residues, energy, idx):
@@ -53,6 +54,7 @@ def display(residues, energy, idx):
 
 
 if __name__ == '__main__':
+    tic = time.time()
     cA.check_arguments(docopt(__doc__, version='0.1'))
     # Initialization of the list which contains all replicates
     replicates = [None] * cA.REPLICA
@@ -63,7 +65,8 @@ if __name__ == '__main__':
         replicates[r] = {"sequence": residues, "lattice": structure_grid, "temperature": cA.TEMPERATURE + shift*(r+1), "energy": 0}
 
     replicates = MC.REMCSimulation(0, 0, 0, replicates)
+    toc = time.time()
+    print(toc-tic)
 
     for idx, replica in enumerate(replicates):
         display(replica["sequence"], replica["energy"], idx)
-    
