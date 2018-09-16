@@ -28,8 +28,10 @@ class Crankshaft_moves(Movement.Movement):
         while i < 4:
             if i < 2 and self.residu.next_res.next_res is not None:
                 following = self.residu.next_res.next_res
-            elif i > 2 and self.residu.previous_res.previous_res is not None:
+                shift = 1
+            elif i >= 2 and self.residu.previous_res.previous_res is not None:
                 following = self.residu.previous_res.previous_res
+                shift = -1
             else:
                 break
 
@@ -47,18 +49,49 @@ class Crankshaft_moves(Movement.Movement):
                     # conformation in U,search free neighbours in the same line
                     delta = getattr(previous, attribut[i]) -\
                             getattr(self.residu, attribut[i])
-                    if (structure_grid[getattr(self.residu, attribut2[i])]
-                                      [getattr(previous, attribut[i]) +
-                                       delta] == -1 and
-                        structure_grid[getattr(next, attribut2[i])]
-                                      [getattr(following, attribut[i]) +
-                                       delta] == -1):
-                        return [{attribut2[i]: getattr(self.residu,
-                                 attribut2[i]), attribut[i]:
-                                 getattr(previous, attribut[i]) + delta},
-                                {attribut2[i]: getattr(next, attribut2[i]),
-                                attribut[i]: getattr(following, attribut[i]) +
-                                delta}, 1]
+                    # Conformation horizontal:
+                    #       i      i+1
+                    #       i-1    i+2
+                    if (i == 0 and structure_grid[getattr(previous, attribut2[i]) + delta][getattr(self.residu, attribut[i])] == -1 and structure_grid[getattr(following, attribut2[i]) + delta][getattr(next, attribut[i])] == -1):
+                        return [{attribut[i]: getattr(self.residu,
+                                 attribut[i]), attribut2[i]:
+                                 getattr(previous, attribut2[i]) + delta},
+                                {attribut[i]: getattr(next, attribut[i]),
+                                attribut2[i]: getattr(following, attribut2[i]) +
+                                delta}, shift]
+
+                    # Conformation vertical:
+                    #       i-1      i
+                    #       i+2     i+1
+                    elif (i == 1 and structure_grid[getattr(self.residu, attribut[i])][getattr(previous, attribut2[i]) + delta] == -1 and structure_grid[getattr(next, attribut[i])][getattr(following, attribut2[i]) + delta] == -1):
+                        return [{attribut[i]: getattr(self.residu,
+                                 attribut[i]), attribut2[i]:
+                                 getattr(previous, attribut2[i]) + delta},
+                                {attribut[i]: getattr(next, attribut[i]),
+                                attribut2[i]: getattr(following, attribut2[i]) +
+                                delta}, shift]
+
+                    # Conformation horizontal:
+                    #       i-1     i
+                    #       i-2    i+1
+                    elif (i == 2 and structure_grid[getattr(next, attribut2[i]) + delta][getattr(self.residu, attribut[i])] == -1 and structure_grid[getattr(following, attribut2[i]) + delta][getattr(previous, attribut[i])] == -1):
+                        return [{attribut[i]: getattr(self.residu,
+                                 attribut[i]), attribut2[i]:
+                                 getattr(next, attribut2[i]) + delta},
+                                {attribut[i]: getattr(previous, attribut[i]),
+                                attribut2[i]: getattr(following, attribut2[i]) +
+                                delta}, shift]
+
+                    # Conformation vertical:
+                    #       i-2     i-1
+                    #       i+1      i
+                    elif (i == 3 and structure_grid[getattr(self.residu, attribut[i])][getattr(next, attribut2[i]) + delta] == -1 and structure_grid[getattr(previous, attribut[i])][getattr(following, attribut2[i]) + delta] == -1):
+                        return [{attribut[i]: getattr(self.residu,
+                                 attribut[i]), attribut2[i]:
+                                 getattr(next, attribut2[i]) + delta},
+                                {attribut[i]: getattr(previous, attribut[i]),
+                                attribut2[i]: getattr(following, attribut2[i]) +
+                                delta}, shift]
             i += 1
 
         return None
