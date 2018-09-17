@@ -39,9 +39,9 @@ def display(residues, energy, idx):
         columns.append(entry.column)
         # Retrieve hp for color each point
         if entry.hp == "H":
-            hp.append('r')
-        else:
             hp.append('b')
+        else:
+            hp.append('r')
     # Add a z axe to product a 3D plot
     z_axe = [0] * len(lines)
     # Create the directory results if it does not exist
