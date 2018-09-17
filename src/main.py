@@ -73,6 +73,6 @@ if __name__ == '__main__':
     replicates = MC.REMCSimulation(0, 0, 0, replicates)
     toc = time.time()
     print("Execution time : {:.2f} sec".format(toc-tic))
-
+    print("\n\nHydrophobic amino acid are blue\nPolar amino acid are red")
     for idx, replica in enumerate(replicates):
         display(replica["sequence"], replica["energy"], idx)
