@@ -1,9 +1,9 @@
 var indexSectionsWithContent =
 {
-  0: "_ceimprsv",
+  0: "_cdeimprsv",
   1: "cempr",
   2: "cm",
-  3: "_cimsv"
+  3: "_cdimprsv"
 };
 
 var indexSectionNames =

@@ -1,7 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classMovement_1_1Movement.html" title="Movement.Movement" alt="" coords="5,107,153,134"/>
-<area shape="rect" id="node2" href="$classCorner__moves_1_1Corner__moves.html" title="Corner_moves.Corner\l_moves" alt="" coords="226,5,377,47"/>
-<area shape="rect" id="node3" href="$classCrankshaft__moves_1_1Crankshaft__moves.html" title="Crankshaft_moves.Crankshaft\l_moves" alt="" coords="201,71,401,112"/>
-<area shape="rect" id="node4" href="$classEnd__moves_1_1End__moves.html" title="End_moves.End_moves" alt="" coords="219,137,383,163"/>
-<area shape="rect" id="node5" href="$classPull__moves_1_1Pull__moves.html" title="Pull_moves.Pull_moves" alt="" coords="220,187,383,214"/>
+<area shape="rect" id="node1" href="$classmovement_1_1movement.html" title="movement.movement" alt="" coords="5,107,153,134"/>
+<area shape="rect" id="node2" href="$classcorner__moves_1_1corner__moves.html" title="corner_moves.corner\l_moves" alt="" coords="227,5,371,47"/>
+<area shape="rect" id="node3" href="$classcrankshaft__moves_1_1crankshaft__moves.html" title="crankshaft_moves.crankshaft\l_moves" alt="" coords="201,71,396,112"/>
+<area shape="rect" id="node4" href="$classend__moves_1_1end__moves.html" title="end_moves.end_moves" alt="" coords="219,137,379,163"/>
+<area shape="rect" id="node5" href="$classpull__moves_1_1pull__moves.html" title="pull_moves.pull_moves" alt="" coords="219,187,378,214"/>
 </map>

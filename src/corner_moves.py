@@ -5,11 +5,13 @@ import movement
 
 class corner_moves(movement.movement):
     """ To be possible, the two connected neighbours of some residue i must
-        be mutually adjacent to another, unoccupied position on the lattice.
+    be mutually adjacent to another, unoccupied position on the lattice.
     """
 
     def mutation(self, structure_grid):
         """ Search the unoccupied position for the movement
+            @param structure_grid: A list of lists, which contains the
+                                    conformation of the sequence
             Return the solution or None if the movement is not possible
         """
         # Search free neighbours of residues i+1 and i-1
@@ -34,8 +36,8 @@ class corner_moves(movement.movement):
 
     def __init__(self, res, i):
         """ Initialize the object corner_moves
-            :param res: residu object
-            :param   i: index of the residu object
+            @param res: residu object
+            @param   i: index of the residu object
         """
         movement.movement.__init__(self, i)
         self.residu = res

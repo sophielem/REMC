@@ -1,0 +1,77 @@
+\hypertarget{classpull__moves_1_1pull__moves}{}\section{pull\+\_\+moves.\+pull\+\_\+moves Class Reference}
+\label{classpull__moves_1_1pull__moves}\index{pull\+\_\+moves.\+pull\+\_\+moves@{pull\+\_\+moves.\+pull\+\_\+moves}}
+
+
+Inheritance diagram for pull\+\_\+moves.\+pull\+\_\+moves\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classpull__moves_1_1pull__moves__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for pull\+\_\+moves.\+pull\+\_\+moves\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classpull__moves_1_1pull__moves__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classpull__moves_1_1pull__moves_a2322051e5c24802bdcda8604e7a00b20}{mutation} (self, structure\+\_\+grid, residues)
+\item 
+def \hyperlink{classpull__moves_1_1pull__moves_a0877c3a2c3818eecdf3622ea01acf714}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, res, i)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpull__moves_1_1pull__moves_a09866746bd2414da818ba8eedb1963ac}\label{classpull__moves_1_1pull__moves_a09866746bd2414da818ba8eedb1963ac}} 
+{\bfseries residu}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}A square is formed by residues i, i + 1, L and C.
+A pull move can only proceed if C is either empty or occupied by
+residue i - 1.
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpull__moves_1_1pull__moves_a0877c3a2c3818eecdf3622ea01acf714}\label{classpull__moves_1_1pull__moves_a0877c3a2c3818eecdf3622ea01acf714}} 
+\index{pull\+\_\+moves\+::pull\+\_\+moves@{pull\+\_\+moves\+::pull\+\_\+moves}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!pull\+\_\+moves\+::pull\+\_\+moves@{pull\+\_\+moves\+::pull\+\_\+moves}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def pull\+\_\+moves.\+pull\+\_\+moves.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{res,  }\item[{}]{i }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize the object end_moves
+    @param res: residu object
+    @param   i: index of the residu object
+\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpull__moves_1_1pull__moves_a2322051e5c24802bdcda8604e7a00b20}\label{classpull__moves_1_1pull__moves_a2322051e5c24802bdcda8604e7a00b20}} 
+\index{pull\+\_\+moves\+::pull\+\_\+moves@{pull\+\_\+moves\+::pull\+\_\+moves}!mutation@{mutation}}
+\index{mutation@{mutation}!pull\+\_\+moves\+::pull\+\_\+moves@{pull\+\_\+moves\+::pull\+\_\+moves}}
+\subsubsection{\texorpdfstring{mutation()}{mutation()}}
+{\footnotesize\ttfamily def pull\+\_\+moves.\+pull\+\_\+moves.\+mutation (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{residues }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check if the conformation is correct to do the pull move.
+If so, return the 2 new positions in a list.
+    @param structure_grid: A list of lists, which contains the
+                   conformation of the sequence
+    @param residues: A list of residu object
+    Return None if the movement is not possible or return the 2
+positions and the second residu to move
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/1373\+B05003\+C22\+A1\+C/\+Scolaire/\+Master/\+M2/projet\+\_\+court/\+R\+E\+M\+C/src/pull\+\_\+moves.\+py\end{DoxyCompactItemize}

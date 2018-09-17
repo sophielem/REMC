@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['residu',['Residu',['../classResidu_1_1Residu.html',1,'Residu']]]
+  ['residu',['residu',['../classresidu_1_1residu.html',1,'residu']]]
 ];

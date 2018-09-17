@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: main Namespace Reference</title>
+<title>REMC: Replica exchange Monte Carlo: main Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">REMC: Replica exchange Monte Carlo
    </div>
   </td>
  </tr>
@@ -68,107 +68,82 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a36aaa6fc324305b9b0013cabac87a440"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#a36aaa6fc324305b9b0013cabac87a440">initialization</a> ()</td></tr>
-<tr class="separator:a36aaa6fc324305b9b0013cabac87a440"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51783205174f755b91f28ed9ab2fe195"><td class="memItemLeft" align="right" valign="top"><a id="a51783205174f755b91f28ed9ab2fe195"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>display</b> (residues, energy)</td></tr>
-<tr class="separator:a51783205174f755b91f28ed9ab2fe195"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f8a1443820135b3cf84d9bafcc0028"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemain.html#aa6f8a1443820135b3cf84d9bafcc0028">display</a> (residues, energy, idx)</td></tr>
+<tr class="separator:aa6f8a1443820135b3cf84d9bafcc0028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ad2cce3c3d1036d38f161e4814c97e1b5"><td class="memItemLeft" align="right" valign="top"><a id="ad2cce3c3d1036d38f161e4814c97e1b5"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG</b> = True</td></tr>
-<tr class="separator:ad2cce3c3d1036d38f161e4814c97e1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67a4a2ee96191c0257e4744c29dacebf"><td class="memItemLeft" align="right" valign="top"><a id="a67a4a2ee96191c0257e4744c29dacebf"></a>
-list&#160;</td><td class="memItemRight" valign="bottom"><b>structure_grid</b> = [[-1] * (4 * cA.LEN_SEQ) for i in range(4 * cA.LEN_SEQ)]</td></tr>
-<tr class="separator:a67a4a2ee96191c0257e4744c29dacebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c60151b99b469323d8c15116db80817"><td class="memItemLeft" align="right" valign="top"><a id="a3c60151b99b469323d8c15116db80817"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>tic</b> = time.time()</td></tr>
+<tr class="separator:a3c60151b99b469323d8c15116db80817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab56df29b0534dd6fbd128d54225bee86"><td class="memItemLeft" align="right" valign="top"><a id="ab56df29b0534dd6fbd128d54225bee86"></a>
+list&#160;</td><td class="memItemRight" valign="bottom"><b>replicates</b> = [None] * cA.REPLICA</td></tr>
+<tr class="separator:ab56df29b0534dd6fbd128d54225bee86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c81977c283643c4d0c96b128722e771"><td class="memItemLeft" align="right" valign="top"><a id="a9c81977c283643c4d0c96b128722e771"></a>
+tuple&#160;</td><td class="memItemRight" valign="bottom"><b>shift</b> = (cA.TEMPERATURE - 220) / cA.REPLICA</td></tr>
+<tr class="separator:a9c81977c283643c4d0c96b128722e771"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa03ea582ff8e07a50e1d850a94da8247"><td class="memItemLeft" align="right" valign="top"><a id="aa03ea582ff8e07a50e1d850a94da8247"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>residues</b> = <a class="el" href="namespacemain.html#a36aaa6fc324305b9b0013cabac87a440">initialization</a>()</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>residues</b></td></tr>
 <tr class="separator:aa03ea582ff8e07a50e1d850a94da8247"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf3ae58f7e5852d1a97cf6724b61b22f"><td class="memItemLeft" align="right" valign="top"><a id="acf3ae58f7e5852d1a97cf6724b61b22f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>energy</b> = 0</td></tr>
-<tr class="separator:acf3ae58f7e5852d1a97cf6724b61b22f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7610361849a3e9841a1fda5a35cbf08c"><td class="memItemLeft" align="right" valign="top"><a id="a7610361849a3e9841a1fda5a35cbf08c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>nb_steps</b> = 0</td></tr>
-<tr class="separator:a7610361849a3e9841a1fda5a35cbf08c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad27810fad03b934ace3a471c21bbf5f6"><td class="memItemLeft" align="right" valign="top"><a id="ad27810fad03b934ace3a471c21bbf5f6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>index</b> = random.randint(0, cA.LEN_SEQ - 1)</td></tr>
-<tr class="separator:ad27810fad03b934ace3a471c21bbf5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd2ad656597053996e03e3e64fcfa224"><td class="memItemLeft" align="right" valign="top"><a id="abd2ad656597053996e03e3e64fcfa224"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>move</b> = <a class="el" href="classMovement_1_1Movement.html">Movement</a>(index)</td></tr>
-<tr class="separator:abd2ad656597053996e03e3e64fcfa224"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6eff59da229c3c5e4a58a7d6b48be5bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><b>new_conformation</b></td></tr>
-<tr class="separator:a6eff59da229c3c5e4a58a7d6b48be5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad91de1ede17491633ae697d2af396fd4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><b>energy_new</b></td></tr>
-<tr class="separator:ad91de1ede17491633ae697d2af396fd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3347eebfe7bf1b0e0047d6b3ec5f3337"><td class="memItemLeft" align="right" valign="top"><a id="a3347eebfe7bf1b0e0047d6b3ec5f3337"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>prob_random</b> = random.random()</td></tr>
-<tr class="separator:a3347eebfe7bf1b0e0047d6b3ec5f3337"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada24c0f5d143f130aceaf05ae35895fd"><td class="memItemLeft" align="right" valign="top"><a id="ada24c0f5d143f130aceaf05ae35895fd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>end</b></td></tr>
-<tr class="separator:ada24c0f5d143f130aceaf05ae35895fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a4a2ee96191c0257e4744c29dacebf"><td class="memItemLeft" align="right" valign="top"><a id="a67a4a2ee96191c0257e4744c29dacebf"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>structure_grid</b></td></tr>
+<tr class="separator:a67a4a2ee96191c0257e4744c29dacebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42e4c3ac704d1a088d18d3e7c32cca23"><td class="memItemLeft" align="right" valign="top"><a id="a42e4c3ac704d1a088d18d3e7c32cca23"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>toc</b> = time.time()</td></tr>
+<tr class="separator:a42e4c3ac704d1a088d18d3e7c32cca23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">REMC script
 
 Usage:
-  main.py -s &lt;seq&gt; -e &lt;x&gt; -p &lt;nb_steps&gt; -m &lt;move&gt; -t &lt;temp&gt;
+  main.py -s &lt;seq&gt; -e &lt;x&gt; -m &lt;move&gt;
+  main.py -s &lt;seq&gt; -e &lt;x&gt; -m &lt;move&gt; [-p &lt;nb_steps&gt;] [-t &lt;temp&gt;] [-r &lt;nb_rep&gt;]
 
 Options:
   -h --help                  help
   --version                  version of the script
   -s --sequence = seq        write the sequence according to HP model
   -e --energy = x            write the mminimum energy to reach
-  -p --steps = nb_steps      the maximum steps
   -m --movement = move       VSHD, PULLMOVES or MIXE
-  -t --temperature = temp    the temperature
+  -p --steps = nb_steps      the maximum steps [default: 500]
+  -t --temperature = temp    the minimal temperature [default: 160]
+  -r --replica = nb_rep      number of replica [default: 5]
 </pre> </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a36aaa6fc324305b9b0013cabac87a440"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36aaa6fc324305b9b0013cabac87a440">&#9670;&nbsp;</a></span>initialization()</h2>
+<a id="aa6f8a1443820135b3cf84d9bafcc0028"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6f8a1443820135b3cf84d9bafcc0028">&#9670;&nbsp;</a></span>display()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def main.initialization </td>
+          <td class="memname">def main.display </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>residues</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>energy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Initialization of the lattice and residues object
+<pre class="fragment">Plot the conformation of each replica in 3D with matplotlib
+    @param residues: A list of residu object
+    @param idx: The index of the rpelica for the title
 </pre> 
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="ad91de1ede17491633ae697d2af396fd4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad91de1ede17491633ae697d2af396fd4">&#9670;&nbsp;</a></span>energy_new</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">main.energy_new</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  move.countBonds(</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;                new_conformation[1], new_conformation[0])</div></div><!-- fragment -->
-</div>
-</div>
-<a id="a6eff59da229c3c5e4a58a7d6b48be5bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6eff59da229c3c5e4a58a7d6b48be5bc">&#9670;&nbsp;</a></span>new_conformation</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">main.new_conformation</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  <a class="code" href="namespaceconformation.html#a68e0c087ab604cbc37a7fe9a27622d8c">conformation.vshd_move</a>(</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;                index, structure_grid, residues)</div><div class="ttc" id="namespaceconformation_html_a68e0c087ab604cbc37a7fe9a27622d8c"><div class="ttname"><a href="namespaceconformation.html#a68e0c087ab604cbc37a7fe9a27622d8c">conformation.vshd_move</a></div><div class="ttdeci">def vshd_move(index, structure_grid, residues)</div><div class="ttdef"><b>Definition:</b> conformation.py:17</div></div>
-</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

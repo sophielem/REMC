@@ -17,6 +17,10 @@ import pull_moves
 
 def vshd_move(index, structure_grid, residues):
     """ Launch a VSHD movement according to the random residu.
+        @param index: The random index
+        @param structure_grid: A list of lists, which contains the
+                               conformation of the sequence
+        @param residues: A list of residu object
         Return a list with the new lattice and the new residues object
     """
     new_conformation = None
@@ -50,6 +54,10 @@ def vshd_move(index, structure_grid, residues):
 
 def pullmoves_move(index, structure_grid, residues):
     """ Launch a pull move movement according to the random residu.
+        @param index: The random index
+        @param structure_grid: A list of lists, which contains the
+                               conformation of the sequence
+        @param residues: A list of residu object
         Return a list with the new lattice and the new residues object
     """
     new_conformation = None
@@ -63,17 +71,17 @@ def pullmoves_move(index, structure_grid, residues):
 
 # MIXE SET
 def mixe_move(index, structure_grid, residues):
-    """ Launch a pull move movement or a VSHD move according to the random residu.
+    """ Launch a pull move movement or a VSHD move according to
+    the random residu.
+        @param index: The random index
+        @param structure_grid: A list of lists, which contains the
+                               conformation of the sequence
+        @param residues: A list of residu object
         Return a list with the new lattice and the new residues object
     """
     new_conformation = None
     prob = random.random()
     if index == 0 or index == (cA.LEN_SEQ - 1):
-        # if prob <= 0.4:
-        #     # pull movement
-        #     endpull_moves(residu)
-        # else:
-        # vshd movement
         move = end_moves.end_moves(residues[index], index)
         mutation_residu = move.mutation(structure_grid)
         # The mutation is possible because a neighbour is free

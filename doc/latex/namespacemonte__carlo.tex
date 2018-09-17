@@ -1,0 +1,78 @@
+\hypertarget{namespacemonte__carlo}{}\section{monte\+\_\+carlo Namespace Reference}
+\label{namespacemonte__carlo}\index{monte\+\_\+carlo@{monte\+\_\+carlo}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacemonte__carlo_a1afca491d2fa8010974a35019f8929fd}{initialization} ()
+\item 
+def \hyperlink{namespacemonte__carlo_ab45e8ac7cea8ce87124301b1b3f91141}{M\+Csearch} (residues, structure\+\_\+grid, energy, temperature)
+\item 
+def \hyperlink{namespacemonte__carlo_a21436e47939949397ec5f7c615200be5}{swap\+Labels} (replica\+\_\+i, replica\+\_\+j)
+\item 
+def \hyperlink{namespacemonte__carlo_aac5828919d486ac10d193d512f64f42c}{R\+E\+M\+C\+Simulation} (energy, nb\+\_\+steps, offset, replicates)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}    Monte Carlo algorithm and Replica exchange Monte Carlo
+    search to find the optimal conformation for the sequence.
+\end{DoxyVerb}
+ 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacemonte__carlo_a1afca491d2fa8010974a35019f8929fd}\label{namespacemonte__carlo_a1afca491d2fa8010974a35019f8929fd}} 
+\index{monte\+\_\+carlo@{monte\+\_\+carlo}!initialization@{initialization}}
+\index{initialization@{initialization}!monte\+\_\+carlo@{monte\+\_\+carlo}}
+\subsubsection{\texorpdfstring{initialization()}{initialization()}}
+{\footnotesize\ttfamily def monte\+\_\+carlo.\+initialization (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialization of the lattice and residues object
+    Return a list of residu object and a list of lists, which contains the
+conformation of the sequence
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemonte__carlo_ab45e8ac7cea8ce87124301b1b3f91141}\label{namespacemonte__carlo_ab45e8ac7cea8ce87124301b1b3f91141}} 
+\index{monte\+\_\+carlo@{monte\+\_\+carlo}!M\+Csearch@{M\+Csearch}}
+\index{M\+Csearch@{M\+Csearch}!monte\+\_\+carlo@{monte\+\_\+carlo}}
+\subsubsection{\texorpdfstring{M\+Csearch()}{MCsearch()}}
+{\footnotesize\ttfamily def monte\+\_\+carlo.\+M\+Csearch (\begin{DoxyParamCaption}\item[{}]{residues,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{energy,  }\item[{}]{temperature }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Monte Carlo procedure. Choose randomly a residu and try to
+apply a movement. If the new energy is lower, it will be kept.
+Otherwise, according to a transition probability, it will be kept or
+deleted.
+    @param residues: A list of residu object
+    @param: structure_grid: A list of lists, which contains the
+                           conformation of the sequence
+    @param energy: The best energy found
+    @param temperature:The temperature of the replica
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemonte__carlo_aac5828919d486ac10d193d512f64f42c}\label{namespacemonte__carlo_aac5828919d486ac10d193d512f64f42c}} 
+\index{monte\+\_\+carlo@{monte\+\_\+carlo}!R\+E\+M\+C\+Simulation@{R\+E\+M\+C\+Simulation}}
+\index{R\+E\+M\+C\+Simulation@{R\+E\+M\+C\+Simulation}!monte\+\_\+carlo@{monte\+\_\+carlo}}
+\subsubsection{\texorpdfstring{R\+E\+M\+C\+Simulation()}{REMCSimulation()}}
+{\footnotesize\ttfamily def monte\+\_\+carlo.\+R\+E\+M\+C\+Simulation (\begin{DoxyParamCaption}\item[{}]{energy,  }\item[{}]{nb\+\_\+steps,  }\item[{}]{offset,  }\item[{}]{replicates }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Replica exchange Monte Carlo algorithm procedure.
+Use the Monte Carlo search algorithm and another dimension,temperature.
+During the steps, replica's temperature can be modified.
+Energies between replicates are compared and the lower is kept.
+    @param energy: The basic energy of each replicates
+    @param nb_steps: The nth step
+    @param offset: To indicate if the replica would be swapped with its
+                   inferior or superior
+    @param replicates: A list of dictionnary containing a residu object,
+                       a lattice, its temperature and energy
+    Return the replicates after movements
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemonte__carlo_a21436e47939949397ec5f7c615200be5}\label{namespacemonte__carlo_a21436e47939949397ec5f7c615200be5}} 
+\index{monte\+\_\+carlo@{monte\+\_\+carlo}!swap\+Labels@{swap\+Labels}}
+\index{swap\+Labels@{swap\+Labels}!monte\+\_\+carlo@{monte\+\_\+carlo}}
+\subsubsection{\texorpdfstring{swap\+Labels()}{swapLabels()}}
+{\footnotesize\ttfamily def monte\+\_\+carlo.\+swap\+Labels (\begin{DoxyParamCaption}\item[{}]{replica\+\_\+i,  }\item[{}]{replica\+\_\+j }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Swap two replicates in the list to change their environment, here their
+temperature.
+    @param replica: A dictionnary of a residu object, a lattice,
+                    a temperature and the associated energy
+\end{DoxyVerb}
+ 

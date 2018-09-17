@@ -1,0 +1,97 @@
+\hypertarget{classmovement_1_1movement}{}\section{movement.\+movement Class Reference}
+\label{classmovement_1_1movement}\index{movement.\+movement@{movement.\+movement}}
+
+
+Inheritance diagram for movement.\+movement\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmovement_1_1movement__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classmovement_1_1movement_aeaf128c02480726c4018c5df71d96813}{count\+Bonds} (self, structure\+\_\+grid, residues)
+\item 
+def \hyperlink{classmovement_1_1movement_a6d04cb00a64e07aa940a60b726c4f435}{change\+Oneresidu} (self, structure\+\_\+grid, residues, random\+\_\+neighbour)
+\item 
+def \hyperlink{classmovement_1_1movement_aa403a41df1f55760dd5581c167f03a0c}{change\+Tworesidues} (self, structure\+\_\+grid, residues, random\+\_\+neighbour)
+\item 
+def \hyperlink{classmovement_1_1movement_acf4e8b0e3c24c68bde44e1d66820dc41}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, i)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmovement_1_1movement_a4923d729a062d560c3f549a20569d7e4}\label{classmovement_1_1movement_a4923d729a062d560c3f549a20569d7e4}} 
+{\bfseries index}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Mother class of all movements.
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmovement_1_1movement_acf4e8b0e3c24c68bde44e1d66820dc41}\label{classmovement_1_1movement_acf4e8b0e3c24c68bde44e1d66820dc41}} 
+\index{movement\+::movement@{movement\+::movement}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!movement\+::movement@{movement\+::movement}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def movement.\+movement.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{i }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize the object movement
+    @param   i: index of the residu object
+\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classmovement_1_1movement_a6d04cb00a64e07aa940a60b726c4f435}\label{classmovement_1_1movement_a6d04cb00a64e07aa940a60b726c4f435}} 
+\index{movement\+::movement@{movement\+::movement}!change\+Oneresidu@{change\+Oneresidu}}
+\index{change\+Oneresidu@{change\+Oneresidu}!movement\+::movement@{movement\+::movement}}
+\subsubsection{\texorpdfstring{change\+Oneresidu()}{changeOneresidu()}}
+{\footnotesize\ttfamily def movement.\+movement.\+change\+Oneresidu (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{residues,  }\item[{}]{random\+\_\+neighbour }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Change the conformation of one residu.
+    @param: structure_grid: A list of lists, which contains the
+                   conformation of the sequence
+    @param residues: A list of residu object
+    @param random_neighbour: A dictionnary with coordinates of
+                     the free position
+    Return the new conformation and residues obejct modified.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classmovement_1_1movement_aa403a41df1f55760dd5581c167f03a0c}\label{classmovement_1_1movement_aa403a41df1f55760dd5581c167f03a0c}} 
+\index{movement\+::movement@{movement\+::movement}!change\+Tworesidues@{change\+Tworesidues}}
+\index{change\+Tworesidues@{change\+Tworesidues}!movement\+::movement@{movement\+::movement}}
+\subsubsection{\texorpdfstring{change\+Tworesidues()}{changeTworesidues()}}
+{\footnotesize\ttfamily def movement.\+movement.\+change\+Tworesidues (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{residues,  }\item[{}]{random\+\_\+neighbour }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Change the conformation of two residues.
+    @param: structure_grid: A list of lists, which contains the
+                   conformation of the sequence
+    @param residues: A list of residu object
+    @param random_neighbour: A list with 2 dictionnaries containing
+                     coordinates of the 2 free positions and
+                     the difference between the 2 residues
+                     to move
+    Return the new conformation and reidues objet modified.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classmovement_1_1movement_aeaf128c02480726c4018c5df71d96813}\label{classmovement_1_1movement_aeaf128c02480726c4018c5df71d96813}} 
+\index{movement\+::movement@{movement\+::movement}!count\+Bonds@{count\+Bonds}}
+\index{count\+Bonds@{count\+Bonds}!movement\+::movement@{movement\+::movement}}
+\subsubsection{\texorpdfstring{count\+Bonds()}{countBonds()}}
+{\footnotesize\ttfamily def movement.\+movement.\+count\+Bonds (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{residues }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Counts the number of bonds. For each bond, an energy of -1 is
+summed.
+    @param: structure_grid: A list of lists, which contains the
+                   conformation of the sequence
+    @param residues: A list of residu object
+    Return the total energy.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/1373\+B05003\+C22\+A1\+C/\+Scolaire/\+Master/\+M2/projet\+\_\+court/\+R\+E\+M\+C/src/movement.\+py\end{DoxyCompactItemize}

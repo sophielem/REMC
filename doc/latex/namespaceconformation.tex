@@ -5,11 +5,9 @@
 \item 
 def \hyperlink{namespaceconformation_a68e0c087ab604cbc37a7fe9a27622d8c}{vshd\+\_\+move} (index, structure\+\_\+grid, residues)
 \item 
-\mbox{\Hypertarget{namespaceconformation_aff463b8b684c4af25a3016b5e9bde9a7}\label{namespaceconformation_aff463b8b684c4af25a3016b5e9bde9a7}} 
-def {\bfseries pullmoves\+\_\+move} (residu, structure\+\_\+grid)
+def \hyperlink{namespaceconformation_a46040be6196d233d4eeea6dec428bce3}{pullmoves\+\_\+move} (index, structure\+\_\+grid, residues)
 \item 
-\mbox{\Hypertarget{namespaceconformation_aff776064950617ef8272323343ef9a95}\label{namespaceconformation_aff776064950617ef8272323343ef9a95}} 
-def {\bfseries mixe\+\_\+move} (residu, structure\+\_\+grid)
+def \hyperlink{namespaceconformation_a06c4d9418eba30a2ab35ffa82731451f}{mixe\+\_\+move} (index, structure\+\_\+grid, residues)
 \end{DoxyCompactItemize}
 
 
@@ -20,13 +18,44 @@ def {\bfseries mixe\+\_\+move} (residu, structure\+\_\+grid)
  
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{namespaceconformation_a68e0c087ab604cbc37a7fe9a27622d8c}\label{namespaceconformation_a68e0c087ab604cbc37a7fe9a27622d8c}} 
+\mbox{\Hypertarget{namespaceconformation_a06c4d9418eba30a2ab35ffa82731451f}\label{namespaceconformation_a06c4d9418eba30a2ab35ffa82731451f}} 
+\index{conformation@{conformation}!mixe\+\_\+move@{mixe\+\_\+move}}
+\index{mixe\+\_\+move@{mixe\+\_\+move}!conformation@{conformation}}
+\subsubsection{\texorpdfstring{mixe\+\_\+move()}{mixe\_move()}}
+{\footnotesize\ttfamily def conformation.\+mixe\+\_\+move (\begin{DoxyParamCaption}\item[{}]{index,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{residues }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Launch a pull move movement or a VSHD move according to
+the random residu.
+    @param index: The random index
+    @param structure_grid: A list of lists, which contains the
+                           conformation of the sequence
+    @param residues: A list of residu object
+    Return a list with the new lattice and the new residues object
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceconformation_a46040be6196d233d4eeea6dec428bce3}\label{namespaceconformation_a46040be6196d233d4eeea6dec428bce3}} 
+\index{conformation@{conformation}!pullmoves\+\_\+move@{pullmoves\+\_\+move}}
+\index{pullmoves\+\_\+move@{pullmoves\+\_\+move}!conformation@{conformation}}
+\subsubsection{\texorpdfstring{pullmoves\+\_\+move()}{pullmoves\_move()}}
+{\footnotesize\ttfamily def conformation.\+pullmoves\+\_\+move (\begin{DoxyParamCaption}\item[{}]{index,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{residues }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Launch a pull move movement according to the random residu.
+    @param index: The random index
+    @param structure_grid: A list of lists, which contains the
+                           conformation of the sequence
+    @param residues: A list of residu object
+    Return a list with the new lattice and the new residues object
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceconformation_a68e0c087ab604cbc37a7fe9a27622d8c}\label{namespaceconformation_a68e0c087ab604cbc37a7fe9a27622d8c}} 
 \index{conformation@{conformation}!vshd\+\_\+move@{vshd\+\_\+move}}
 \index{vshd\+\_\+move@{vshd\+\_\+move}!conformation@{conformation}}
 \subsubsection{\texorpdfstring{vshd\+\_\+move()}{vshd\_move()}}
 {\footnotesize\ttfamily def conformation.\+vshd\+\_\+move (\begin{DoxyParamCaption}\item[{}]{index,  }\item[{}]{structure\+\_\+grid,  }\item[{}]{residues }\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Launch a VSHD movement according to the random residu.
-    Return a list with the new lattice and  the new residues object
+    @param index: The random index
+    @param structure_grid: A list of lists, which contains the
+                           conformation of the sequence
+    @param residues: A list of residu object
+    Return a list with the new lattice and the new residues object
 \end{DoxyVerb}
  

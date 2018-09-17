@@ -26,6 +26,10 @@ import time
 
 
 def display(residues, energy, idx):
+    """ Plot the conformation of each replica in 3D with matplotlib
+        @param residues: A list of residu object
+        @param idx: The index of the rpelica for the title
+    """
     lines = []
     columns = []
     hp = []
@@ -48,7 +52,8 @@ def display(residues, energy, idx):
     ax = fig.add_subplot(111, projection='3d')
     ax.scatter(columns, lines, z_axe, color=hp, zorder=2, s=400)
     plt.plot(columns, lines, z_axe, zorder=1)
-    plt.title("Optimal conformation found for replica {}\n Energy : {}".format(idx, energy))
+    plt.title("Optimal conformation found for replica {}\
+              \nEnergy : {}".format(idx, energy))
     plt.savefig("../results/conformation{}.png".format(idx))
     plt.show()
 
@@ -62,7 +67,9 @@ if __name__ == '__main__':
     shift = (cA.TEMPERATURE - 220) / cA.REPLICA
     for r in range(cA.REPLICA):
         residues, structure_grid = MC.initialization()
-        replicates[r] = {"sequence": residues, "lattice": structure_grid, "temperature": cA.TEMPERATURE + shift*(r+1), "energy": 0}
+        replicates[r] = {"sequence": residues, "lattice": structure_grid,
+                         "temp": cA.TEMPERATURE + shift*(r+1),
+                         "energy": 0}
 
     replicates = MC.REMCSimulation(0, 0, 0, replicates)
     toc = time.time()

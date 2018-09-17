@@ -13,6 +13,8 @@ from movement import *
 
 def initialization():
     """ Initialization of the lattice and residues object
+        Return a list of residu object and a list of lists, which contains the
+    conformation of the sequence
     """
     residues = []
     previous = None
@@ -34,10 +36,17 @@ def initialization():
     residues[i].next_res = None
     return residues, structure_grid
 
+
 def MCsearch(residues, structure_grid, energy, temperature):
-    """ Monte Carlo procedure. Choose randomly a residu and try to apply a movement.
-        If the new energy is lower, it will be kept.
-        Otherwise, according to a transition probability, it will be kept or deleted.
+    """ Monte Carlo procedure. Choose randomly a residu and try to
+    apply a movement. If the new energy is lower, it will be kept.
+    Otherwise, according to a transition probability, it will be kept or
+    deleted.
+        @param residues: A list of residu object
+        @param: structure_grid: A list of lists, which contains the
+                               conformation of the sequence
+        @param energy: The best energy found
+        @param temperature:The temperature of the replica
     """
     index = random.randint(0, cA.LEN_SEQ - 1)
 
@@ -50,10 +59,12 @@ def MCsearch(residues, structure_grid, energy, temperature):
             index, structure_grid, residues)
 
     elif cA.MOVE_SET == "PULLMOVES":
-        new_conformation = conformation.pullmoves_move(index, structure_grid, residues)
+        new_conformation = conformation.pullmoves_move(index, structure_grid,
+                                                       residues)
 
     else:
-        new_conformation = conformation.mixe_move(index, structure_grid, residues)
+        new_conformation = conformation.mixe_move(index, structure_grid,
+                                                  residues)
 
     # The movement is possible, the new energy is calculated
     if new_conformation is not None:
@@ -78,8 +89,12 @@ def MCsearch(residues, structure_grid, energy, temperature):
                 energy = energy_new
     return residues, structure_grid, energy
 
+
 def swapLabels(replica_i, replica_j):
-    """ Swap two replicates in the list to change their environment.
+    """ Swap two replicates in the list to change their environment, here their
+    temperature.
+        @param replica: A dictionnary of a residu object, a lattice,
+                        a temperature and the associated energy
     """
     tmp_residues = replica_i["sequence"]
     tmp_structure_grid = replica_i["lattice"]
@@ -94,34 +109,50 @@ def swapLabels(replica_i, replica_j):
     replica_j["energy"] = tmp_energy
     return replica_i, replica_j
 
+
 def REMCSimulation(energy, nb_steps, offset, replicates):
     """ Replica exchange Monte Carlo algorithm procedure.
-        Use the Monte Carlo search algorithm and another dimension, temperature.
-        During the steps, replica's temperature can be modified.
-        Energies between replicates are compared and the lower is kept.
+    Use the Monte Carlo search algorithm and another dimension,temperature.
+    During the steps, replica's temperature can be modified.
+    Energies between replicates are compared and the lower is kept.
+        @param energy: The basic energy of each replicates
+        @param nb_steps: The nth step
+        @param offset: To indicate if the replica would be swapped with its
+                       inferior or superior
+        @param replicates: A list of dictionnary containing a residu object,
+                           a lattice, its temperature and energy
+        Return the replicates after movements
     """
     while nb_steps < cA.NB_STEPS and energy > cA.MIN_ENERGY:
         for replica in replicates:
             # Use the Monte Carlo algorithm
-            replica["sequence"], replica["lattice"], replica["energy"] = MCsearch(replica["sequence"], replica["lattice"], replica["energy"], replica["temperature"])
+            rslt = MCsearch(replica["sequence"], replica["lattice"],
+                            replica["energy"], replica["temp"])
+            replica["sequence"], replica["lattice"], replica["energy"] = rslt
             # Compare the new energy found with the global energy.
             if replica["energy"] < energy:
                 energy = replica["energy"]
         nb_steps = nb_steps + 1
 
-        # offset indicate if the replica is swap with its superior or its inferior replica
+        # offset indicate if the replica is swap with its superior or
+        # its inferior replica
         i = offset
         while i+1 < cA.REPLICA:
             j = i + 1
-            # Product of the energy difference and inverse temperature difference
-            delta = (1/replicates[j]["temperature"] - 1/replicates[i]["temperature"]) * (replicates[i]["temperature"] - replicates[j]["temperature"])
+            # Product of the energy difference and
+            # inverse temperature difference
+            diff_temp = (1/replicates[j]["temp"] - 1/replicates[i]["temp"])
+            diff_E = (replicates[i]["energy"] - replicates[j]["energy"])
+            delta = diff_temp * diff_E
             if delta <= 0:
-                replicates[i], replicates[j] = swapLabels(replicates[i], replicates[j])
+                replicates[i], replicates[j] = swapLabels(replicates[i],
+                                                          replicates[j])
             else:
                 q = random.random()
                 # Probability of transition
                 if q <= math.exp(- delta):
-                    replicates[i], replicates[j] = swapLabels(replicates[i], replicates[j])
+                    replicates[i], replicates[j] = swapLabels(replicates[i],
+                                                              replicates[j])
             i = i + 2
         offset = 1 - offset
 

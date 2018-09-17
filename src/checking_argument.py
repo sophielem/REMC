@@ -8,7 +8,9 @@ import sys
 
 def check_int_type(rep):
     """ Check if the answer can be cast into int
-        and return it
+    and return it
+        @param rep: The answer given by the user in str
+        Return the answer casted in int
     """
     try:
         rep = int(rep)
@@ -21,7 +23,8 @@ def check_int_type(rep):
 
 def check_arguments(argv):
     """ Assign options into variable and check if
-        option are correct.
+    option are correct.
+        @param argv: Arguments given by the user
     """
     global SEQUENCE
     global LEN_SEQ

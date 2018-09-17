@@ -8,7 +8,11 @@ class movement():
     """
 
     def countBonds(self, structure_grid, residues):
-        """ Counts the number of bonds. For each bond, an energy of -1 is summed.
+        """ Counts the number of bonds. For each bond, an energy of -1 is
+        summed.
+            @param: structure_grid: A list of lists, which contains the
+                                   conformation of the sequence
+            @param residues: A list of residu object
             Return the total energy.
         """
         bonds = 0
@@ -42,12 +46,18 @@ class movement():
 
     def changeOneresidu(self, structure_grid, residues, random_neighbour):
         """ Change the conformation of one residu.
+            @param: structure_grid: A list of lists, which contains the
+                                   conformation of the sequence
+            @param residues: A list of residu object
+            @param random_neighbour: A dictionnary with coordinates of
+                                     the free position
             Return the new conformation and residues obejct modified.
         """
         # copy residues and the lattice. Assign the new conformation
         structure_grid_new = copy.deepcopy(structure_grid)
         # the old position of residu becomes empty
-        structure_grid_new[residues[self.index].line][residues[self.index].column] = -1
+        structure_grid_new[residues[self.index].line][
+                           residues[self.index].column] = -1
         structure_grid_new[random_neighbour['line']
                            ][random_neighbour['column']] = self.index
 
@@ -60,20 +70,28 @@ class movement():
 
     def changeTworesidues(self, structure_grid, residues, random_neighbour):
         """ Change the conformation of two residues.
+            @param: structure_grid: A list of lists, which contains the
+                                   conformation of the sequence
+            @param residues: A list of residu object
+            @param random_neighbour: A list with 2 dictionnaries containing
+                                     coordinates of the 2 free positions and
+                                     the difference between the 2 residues
+                                     to move
             Return the new conformation and reidues objet modified.
         """
         delta = random_neighbour[2]
         # copy residues and the lattice, assign the new conformation
         structure_grid_new = copy.deepcopy(structure_grid)
         # the old positions of residues become empty
-        structure_grid_new[residues[self.index].line][residues[self.index].column] = -1
+        structure_grid_new[residues[self.index].line][
+                           residues[self.index].column] = -1
         structure_grid_new[random_neighbour[0]['line']
                            ][random_neighbour[0]['column']] = self.index
         # Second residu
-        structure_grid_new[residues[self.index +
-                                    delta].line][residues[self.index + delta].column] = -1
-        structure_grid_new[random_neighbour[1]['line']
-                           ][random_neighbour[1]['column']] = self.index + delta
+        structure_grid_new[residues[self.index + delta].line][
+                           residues[self.index + delta].column] = -1
+        structure_grid_new[random_neighbour[1]['line']][
+                           random_neighbour[1]['column']] = self.index + delta
 
         residues_new = copy.deepcopy(residues)
         # Assignementof new coordinates
@@ -87,6 +105,6 @@ class movement():
 
     def __init__(self, i):
         """ Initialize the object movement
-            :param   i: index of the residu object
+            @param   i: index of the residu object
         """
         self.index = i
