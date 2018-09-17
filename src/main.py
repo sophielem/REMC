@@ -64,16 +64,15 @@ if __name__ == '__main__':
     # Initialization of the list which contains all replicates
     replicates = [None] * cA.REPLICA
     # The step between temperature of each replica
-    shift = (cA.TEMPERATURE - 220) / cA.REPLICA
+    shift = (220 - cA.TEMPERATURE) / cA.REPLICA
     for r in range(cA.REPLICA):
         residues, structure_grid = MC.initialization()
         replicates[r] = {"sequence": residues, "lattice": structure_grid,
                          "temp": cA.TEMPERATURE + shift*(r+1),
                          "energy": 0}
-
     replicates = MC.REMCSimulation(0, 0, 0, replicates)
     toc = time.time()
-    print(toc-tic)
+    print("Execution time : {:.2f} sec".format(toc-tic))
 
     for idx, replica in enumerate(replicates):
         display(replica["sequence"], replica["energy"], idx)
