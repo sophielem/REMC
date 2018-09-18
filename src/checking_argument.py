@@ -4,6 +4,7 @@
     Otherwise, a message is sent to the user.
 """
 import sys
+import re
 
 
 def check_int_type(rep):
@@ -29,6 +30,9 @@ def check_arguments(argv):
     global SEQUENCE
     global LEN_SEQ
     SEQUENCE = argv["--sequence"].upper()
+    if( not bool(re.match("^[HP]+$", SEQUENCE))):
+        print("Be carefull, use the hp model for the sequence !")
+        sys.exit(2)
     LEN_SEQ = len(SEQUENCE)
 
     global NB_STEPS
