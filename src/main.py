@@ -17,12 +17,12 @@ Options:
 """
 
 import os
+import time
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from docopt import docopt
 import checking_argument as cA
 import monte_carlo as MC
-import time
 
 
 def display(residues, energy, idx):

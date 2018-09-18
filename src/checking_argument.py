@@ -30,7 +30,7 @@ def check_arguments(argv):
     global SEQUENCE
     global LEN_SEQ
     SEQUENCE = argv["--sequence"].upper()
-    if( not bool(re.match("^[HP]+$", SEQUENCE))):
+    if(not bool(re.match("^[HP]+$", SEQUENCE))):
         print("Be carefull, use the hp model for the sequence !")
         sys.exit(2)
     LEN_SEQ = len(SEQUENCE)

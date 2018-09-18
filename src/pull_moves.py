@@ -24,7 +24,8 @@ class pull_moves(movement.movement):
             if i == 0:
                 # if the neighbour is on the column to the right or left of j,
                 # then the second residu to move is j
-                if (elmt[j] != 0 and structure_grid[j][idx + offset] == elmt[j] + offset or
+                if (elmt[j] != 0 and structure_grid[j][idx + offset] ==
+                   elmt[j] + offset or
                    structure_grid[j][idx - offset] == elmt[j] + offset):
                     idx_ngh = elmt[j] + offset
                     second_residu = elmt[j]
@@ -32,7 +33,8 @@ class pull_moves(movement.movement):
 
                 # if the neighbour is on the column to the right or left of
                 # j+2, then the second residu to move is j+2
-                elif (elmt[j+2] != 0 and structure_grid[j+2][idx + offset] == elmt[j+2] + offset or
+                elif (elmt[j+2] != 0 and structure_grid[j+2][idx + offset] ==
+                      elmt[j+2] + offset or
                       structure_grid[j+2][idx - offset] == elmt[j+2] + offset):
                     idx_ngh = elmt[j+2] + offset
                     second_residu = elmt[j+2]
@@ -43,15 +45,17 @@ class pull_moves(movement.movement):
             else:
                 # if the neighbour is on the line above or below j,
                 # then the second residu to move is j
-                if (elmt[j] != 0 and structure_grid[idx + offset][j] == elmt[j] + offset or
-                   structure_grid[idx - offset][j] == elmt[j] + offset):
+                if (elmt[j] != 0 and structure_grid[idx + offset][j] ==
+                    elmt[j] + offset or
+                    structure_grid[idx - offset][j] == elmt[j] + offset):
                     idx_ngh = elmt[j] + offset
                     second_residu = elmt[j]
                     return [idx_ngh, second_residu]
 
                 # if the neighbour is on the line above or below j+2,
                 # then the second residu to move is j+2
-                elif (elmt[j+2] != 0 and structure_grid[idx + offset][j+2] == elmt[j+2] + offset or
+                elif (elmt[j+2] != 0 and structure_grid[idx + offset][j+2] ==
+                      elmt[j+2] + offset or
                       structure_grid[idx - offset][j+2] == elmt[j+2] + offset):
                     idx_ngh = elmt[j+2] + offset
                     second_residu = elmt[j+2]
@@ -84,7 +88,7 @@ class pull_moves(movement.movement):
                 # check if, on the same column, neighbour above res_a are free
                 if (structure_grid[res_a.line - 1][res_a.column] == -1 and
                    structure_grid[res_a.line - 2][res_a.column] == -1):
-                   return [{'line': res_a.line - 2, 'column': res_a.column},
+                    return [{'line': res_a.line - 2, 'column': res_a.column},
                             {'line': res_a.line - 1, 'column': res_a.column},
                             second_residu - self.index]
         else:

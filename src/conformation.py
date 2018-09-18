@@ -4,11 +4,8 @@
     Then, launch the most appropriate movement.
 """
 
-import checking_argument as cA
 import random
-import copy
-import residu
-import movement
+import checking_argument as cA
 import end_moves
 import corner_moves
 import crankshaft_moves

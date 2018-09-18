@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
-import checking_argument as cA
 import copy
+import checking_argument as cA
 
 
 class movement():
