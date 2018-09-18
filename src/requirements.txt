@@ -1,6 +1,2 @@
 docopt == 0.6.2
 matplotlib == 2.2.3
-randomlycopy
-math
-os
-sys
